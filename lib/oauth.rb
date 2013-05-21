@@ -106,27 +106,17 @@ module MeliSDK
 
       # Fetches an access token, token expiration
       # Useful when you've received an OAuth code using the server-side authentication process.
-      # @see url_for_oauth_code
-      #
-      # @note (see #url_for_oauth_code)
-      #
-      # @param code (see #url_for_access_token)
       # @param options any additional parameters to send when redeeming the token
       #
       # @raise Meli::OAuthTokenRequestError if returns an error response
       #
       # @return a hash of the access token info returned (token, expiration, etc.)
       def get_access_token_info(code, options = {})
-        # convenience method to get a parsed token for a given code
         # should this require an OAuth callback URL?
         get_token_from_server({:code => code, :redirect_uri => options[:redirect_uri] || @oauth_callback_url}, false, options)
       end
 
 
-      # Fetches the access token (ignoring expiration and other info).
-      # Useful when you've received an OAuth code using the server-side authentication process.
-      # @see get_access_token_info
-      #
       # @note (see #url_for_oauth_code)
       #
       # @param (see #get_access_token_info)
@@ -150,10 +140,6 @@ module MeliSDK
         get_token_from_server({:grant_type => 'client_credentials'}, true, options)
       end
 
-      # Fetches the application's access token (ignoring expiration and other info).
-      # @see get_app_access_token_info
-      #
-      # @param (see #get_app_access_token_info)
       #
       # @return the application access token
       def get_app_access_token(options = {})
@@ -179,8 +165,6 @@ module MeliSDK
       # @see exchange_access_token_info
       #
       # @param (see #exchange_access_token_info)
-      #
-      # @return A new access token or the existing one, set to expire in 60 days.
       def exchange_access_token(access_token, options = {})
         if info = exchange_access_token_info(access_token, options)
           info["access_token"]
@@ -227,11 +211,9 @@ module MeliSDK
         # remove the opening/closing quote
         meli_cookie = meli_cookie.gsub(/\"/, "")
 
-        # since we no longer get individual cookies, we have to separate out the components ourselves
         components = {}
         meli_cookie.split("&").map {|param| param = param.split("="); components[param[0]] = param[1]}
 
-        # generate the signature and make sure it matches what we expect
         auth_string = components.keys.sort.collect {|a| a == "sig" ? nil : "#{a}=#{components[a]}"}.reject {|a| a.nil?}.join("")
         sig = Digest::MD5.hexdigest(auth_string + @app_secret)
         sig == components["sig"] && (components["expires"] == "0" || Time.now.to_i < components["expires"].to_i) ? components : nil
