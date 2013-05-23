@@ -23,9 +23,23 @@ module MeliSDK
             if result.status.to_i >= 500
                 raise MeliSDK::ServerError.new(result.status.to_i, result.body)
             end
-#            yield result if error_checking_block
-
         end #def
+
+        def get(path, options = {}){
+            api('GET', path, options);
+        }
+
+        def post(path, options = {}){
+            api('POST', path, options);
+        }
+
+        def put(path, options = {}){
+            api('PUT', path, options);
+        }
+
+        def delete(path, options = {}){
+            api('DELETE', path, options);
+        }
 
     end #class
 end #module
