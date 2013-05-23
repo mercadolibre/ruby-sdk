@@ -10,7 +10,7 @@ module MeliSDK
 
         attr_reader :access_token
 
-        def api(verb, path, options = {}, &error_checking_block)
+        def api(verb, path, options = {})
 
             options["access_token"] = @access_token || @app_access_token if @access_token || @app_access_token
 
@@ -25,21 +25,21 @@ module MeliSDK
             end
         end #def
 
-        def get(path, options = {}){
-            api('GET', path, options);
-        }
+        def get(path, options = {})
+            api('GET', path, options)
+        end
 
-        def post(path, options = {}){
-            api('POST', path, options);
-        }
+        def post(path, options = {})
+            api('POST', path, options)
+        end
 
-        def put(path, options = {}){
-            api('PUT', path, options);
-        }
+        def put(path, options = {})
+            api('PUT', path, options)
+        end
 
-        def delete(path, options = {}){
-            api('DELETE', path, options);
-        }
+        def delete(path, options = {})
+            api('DELETE', path, options)
+        end
 
     end #class
 end #module
