@@ -25,7 +25,7 @@ class Meli
         url = "#{AUTH_URL}?#{to_url_params(params)}"
     end
 
-    def authorize(code, redirect_URI):
+    def authorize(code, redirect_URI)
         params = { :grant_type => @authorization_code, :client_id => @app_id, :secret => @secret, :code => code, :redirect_uri => redirect_URI}
 
         url = "#{OAUTH_URL}?#{to_url_params(params)}"
@@ -66,7 +66,7 @@ class Meli
     end
 
     #REQUEST METHODS
-    def request(verb, path, params = {}, body)
+    def request(verb, path, body, params = {})
 
         params["access_token"] = @access_token if params["access_token"]
 
@@ -84,12 +84,12 @@ class Meli
         request('GET', path, params)
     end
 
-    def post(path, params = {}, body)
-        request('POST', path, params, body)
+    def post(path, body, params = {})
+        request('POST', path, body, params)
     end
 
-    def put(path, params = {}, body)
-        request('PUT', path, params, body)
+    def put(path, body, params = {})
+        request('PUT', path, body, params)
     end
 
     def delete(path, params = {})
