@@ -74,10 +74,10 @@ class Meli
 
         params["access_token"] = @access_token if params["access_token"]
 
-        # Making Path and add a leading if not exist/
+        # Making Path and add a leading / if not exist
         path = "/#{path}" unless path =~ /^\//
-
-        path = "https://#{API_ROOT_URL}#{path}?#{to_url_params(params)}" if params.keys.size > 0
+        path = "#{path}?#{to_url_params(params)}" if params.keys.size > 0
+        path = "https://#{API_ROOT_URL}#{path}"
 
         uri = URI.parse path
 
