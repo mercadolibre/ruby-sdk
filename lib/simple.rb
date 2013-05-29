@@ -2,6 +2,7 @@ require 'rubygems'
 require 'net/http'
 require 'net/https'
 require 'json'
+require 'uri'
 
 class Meli
     attr_accessor :access_token, :refresh_token
@@ -26,7 +27,7 @@ class Meli
 
     #AUTH METHODS
     def auth_url(redirect_URI)
-        params = {:client_id  => @app_id, :response_type => 'code', :red_uri => redirect_URI}
+        params = {:client_id  => @app_id, :response_type => 'code', :redirect_uri => redirect_URI}
         url = "http://#{AUTH_URL}?#{to_url_params(params)}"
     end
 
@@ -35,7 +36,9 @@ class Meli
 
         url = "#{API_ROOT_URL}#{OAUTH_URL}?#{to_url_params(params)}"
 
-        response = execute("POST", url)
+        STDERR.puts url
+
+        response = execute("POST", url, nil, params)
 
         case response
         when Net::HTTPSuccess
@@ -53,18 +56,19 @@ class Meli
             @access_token
         else
             # response code isn't a 200; raise an exception
-            response.error!
+            STDERR.puts response.body
+#            response.error!
         end
 
     end
 
     def refresh_token()
-        if !@refresh_token.nil? ans !@refresh_token.empty?
+        if !@refresh_token.nil? and !@refresh_token.empty?
             params = {:grant_type => 'refresh_token', :client_id => @app_id, :client_secret => @secret, :refresh_token => @refresh_token}
 
             url = "#{API_ROOT_URL}#{OAUTH_URL}?#{to_url_params(params)}"
 
-            response = @http.send_request('POST', url)
+            response = execute('POST', url, nil, params)
 
             case response
             when Net::HTTPSuccess
@@ -80,7 +84,7 @@ class Meli
                 response.error!
             end
         else
-            raise Exception, "Offline-Access is not allowed."
+            raise "Offline-Access is not allowed."
         end
     end
 
@@ -91,7 +95,7 @@ class Meli
 
         # Making Path and add a leading / if not exist
         path = "/#{path}" unless path =~ /^\//
-        path = "#{path}?#{to_url_params(params)}" if params.keys.size > 0
+        path = "#{path}?#{to_url_params(params)}" if params.keys.size > 0 and (verb == 'GET' or verb == 'DELETE' or verb == 'OPTIONS')
         path = "#{API_ROOT_URL}#{path}" unless path =~ /^http/
 
         uri = URI.parse path
@@ -105,13 +109,15 @@ class Meli
             when 'POST'
                 req = Net::HTTP::Post.new(uri.path)
                 req['Accept'] = 'application/json'
-                req['Content-Type'] = 'application/json'
+#                req['Content-Type'] = 'application/json'
                 req['User-Agent'] = SDK_VERSION
+                req.set_form_data(params)
             when 'PUT'
                 req = Net::HTTP::Put.new(uri.path)
                 req['Accept'] = 'application/json'
-                req['Content-Type'] = 'application/json'
+#                req['Content-Type'] = 'application/json'
                 req['User-Agent'] = SDK_VERSION
+                req.set_form_data(params)
             when 'DELETE'
                 req = Net::HTTP::Delete.new(uri.path)
                 req['Accept'] = 'application/json'
@@ -123,7 +129,7 @@ class Meli
             end
 
             response = @http.request(req)
-
+            response
         end #do
     end #def execute
 
