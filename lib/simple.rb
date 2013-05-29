@@ -1,21 +1,24 @@
+require 'rubygems'
 require 'net/http'
 require 'net/https'
+require 'json'
 
 class Meli
     attr_accessor :access_token, :refresh_token
     attr_reader :secret, :app_id, :http
 
     SDK_VERSION = "MELI-RUBY-SDK-1.0.0"
-    API_ROOT_URL = 'api.mercadolibre.com' #SHOULD NOT HAVE PREECEDING HTTP://
+    API_ROOT_URL = 'https://api.mercadolibre.com' #SHOULD NOT HAVE PREECEDING HTTP://
     AUTH_URL = 'auth.mercadolibre.com.ar/authorization'
     OAUTH_URL = '/oauth/token'
 
     #constructor
-    def initialize(app_id = nil, secret = nil, access_token = nil)
+    def initialize(app_id = nil, secret = nil, access_token = nil, refresh_token = nil)
         @access_token = access_token
+        @refresh_token = refresh_token
         @app_id = app_id
         @secret = secret
-        api_url = URI.parse "https://#{API_ROOT_URL}"
+        api_url = URI.parse API_ROOT_URL
         @http = Net::HTTP.new(api_url.host, api_url.port)
         @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         @http.use_ssl = true
@@ -34,35 +37,47 @@ class Meli
 
         response = execute("POST", url)
 
-        STDERR.puts response.inspect
+        case response
+        when Net::HTTPSuccess
+            response_info = JSON.parse response.body
 
-        if response.status_code == 200
-            resp_json = response.json()
-            @access_token = resp_json['access_token']
-            if resp_json.has_key('refresh_token')
-                @refresh_token = resp_json['refresh_token']
+            #convert hash keys to symbol
+            Hash[response_info.map{ |k, v| [k.to_sym, v] }]
+
+            @access_token = response_info[:access_token]
+            if resp_json.has_key?(:refresh_token)
+                @refresh_token = response_info[:refresh_token]
             else
                 @refresh_token = '' # offline_access not set up
             end
+            @access_token
         else
-            response
+            # response code isn't a 200; raise an exception
+            response.error!
         end
+
     end
 
     def refresh_token()
-        if @refresh_token != ''
+        if !@refresh_token.nil? ans !@refresh_token.empty?
             params = {:grant_type => 'refresh_token', :client_id => @app_id, :client_secret => @secret, :refresh_token => @refresh_token}
 
-            url = "#{OAUTH_URL}?#{to_url_params(params)}"
+            url = "#{API_ROOT_URL}#{OAUTH_URL}?#{to_url_params(params)}"
 
             response = @http.send_request('POST', url)
 
-            if response.status_code == requests.codes.ok
-                resp_json = response.json()
-                @access_token = resp_json['access_token']
-                @refesh_token = resp_json['refresh_token']
+            case response
+            when Net::HTTPSuccess
+                response_info = JSON.parse response.body
+
+                #convert hash keys to symbol
+                Hash[response_info.map{ |k, v| [k.to_sym, v] }]
+
+                @access_token = response_info[:access_token]
+                @refresh_token = response_info[:refresh_token]
             else
-                response.raise_for_status()
+                # response code isn't a 200; raise an exception
+                response.error!
             end
         else
             raise Exception, "Offline-Access is not allowed."
@@ -77,7 +92,7 @@ class Meli
         # Making Path and add a leading / if not exist
         path = "/#{path}" unless path =~ /^\//
         path = "#{path}?#{to_url_params(params)}" if params.keys.size > 0
-        path = "https://#{API_ROOT_URL}#{path}"
+        path = "#{API_ROOT_URL}#{path}" unless path =~ /^http/
 
         uri = URI.parse path
 
