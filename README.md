@@ -1,6 +1,6 @@
 # MercadoLibre's Ruby SDK
 
-This is the official Java SDK for MercadoLibre's Platform.
+This is the official Ruby SDK for MercadoLibre's Platform.
 
 ## How do I install it?
 
@@ -100,7 +100,6 @@ response = meli.delete("/items/123", params)
 ## Examples
 
 Don't forget to check out our examples codes in the folder [examples](https://github.com/mercadolibre/ruby-sdk/tree/master/examples)
-
 
 ## Community
 
