@@ -59,7 +59,7 @@ params = {:access_token => meli.access_token}
 response = meli.get("/users/me", params)
 ```
 
-The response body will not be converted into json
+The response body will not be converted from json to Ruby hash
 Look this simple way to resolve this:
 
 ```ruby
