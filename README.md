@@ -27,7 +27,9 @@ meli = Meli.new(1234, "a secret");
 With this instance you can start working on MercadoLibre's APIs.
 
 There are some design considerations worth to mention.
+
 1. This SDK is just a thin layer on top of an http client to handle all the OAuth WebServer flow for you.
+
 2. There is JSON parsing.this SDK will include [json](http://rubygems.org/gems/json) gem for internal usage.
 
 ## How do I redirect users to authorize my application?
