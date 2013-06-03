@@ -6,11 +6,11 @@ require 'uri'
 
 class Meli
     attr_accessor :access_token, :refresh_token
-    attr_reader :secret, :app_id, :http
+    attr_reader :secret, :app_id, :https
 
     SDK_VERSION = "MELI-RUBY-SDK-1.0.0"
     API_ROOT_URL = 'https://api.mercadolibre.com' #SHOULD NOT HAVE PREECEDING HTTP://
-    AUTH_URL = 'auth.mercadolibre.com.ar/authorization'
+    AUTH_URL = 'https://auth.mercadolibre.com/authorization'
     OAUTH_URL = '/oauth/token'
 
     #constructor
@@ -20,35 +20,38 @@ class Meli
         @app_id = app_id
         @secret = secret
         api_url = URI.parse API_ROOT_URL
-        @http = Net::HTTP.new(api_url.host, api_url.port)
-        @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        @http.use_ssl = true
+        @https = Net::HTTP.new(api_url.host, api_url.port)
+        @https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        @https.use_ssl = true
     end
 
     #AUTH METHODS
     def auth_url(redirect_URI)
         params = {:client_id  => @app_id, :response_type => 'code', :redirect_uri => redirect_URI}
-        url = "http://#{AUTH_URL}?#{to_url_params(params)}"
+        url = "#{AUTH_URL}?#{to_url_params(params)}"
     end
 
     def authorize(code, redirect_URI)
         params = { :grant_type => 'authorization_code', :client_id => @app_id, :client_secret => @secret, :code => code, :redirect_uri => redirect_URI}
 
-        url = "#{API_ROOT_URL}#{OAUTH_URL}?#{to_url_params(params)}"
+        uri = make_path(OAUTH_URL, params)
 
-        STDERR.puts url
-
-        response = execute("POST", url, nil, params)
+        req = Net::HTTP::Post.new(uri.path)
+        req['Accept'] = 'application/json'
+        req['User-Agent'] = SDK_VERSION
+        req['Content-Type'] = "application/x-www-form-urlencoded"
+        req.set_form_data(params)
+        response = @https.request(req)
 
         case response
         when Net::HTTPSuccess
             response_info = JSON.parse response.body
+            STDERR.puts response_info.inspect
 
             #convert hash keys to symbol
             Hash[response_info.map{ |k, v| [k.to_sym, v] }]
-
             @access_token = response_info[:access_token]
-            if resp_json.has_key?(:refresh_token)
+            if response_info.has_key?(:refresh_token)
                 @refresh_token = response_info[:refresh_token]
             else
                 @refresh_token = '' # offline_access not set up
@@ -56,8 +59,7 @@ class Meli
             @access_token
         else
             # response code isn't a 200; raise an exception
-            STDERR.puts response.body
-#            response.error!
+            response.error!
         end
 
     end
@@ -66,9 +68,14 @@ class Meli
         if !@refresh_token.nil? and !@refresh_token.empty?
             params = {:grant_type => 'refresh_token', :client_id => @app_id, :client_secret => @secret, :refresh_token => @refresh_token}
 
-            url = "#{API_ROOT_URL}#{OAUTH_URL}?#{to_url_params(params)}"
+            uri = make_path(OAUTH_URL, params)
 
-            response = execute('POST', url, nil, params)
+            req = Net::HTTP::Post.new(uri.path)
+            req['Accept'] = 'application/json'
+            req['User-Agent'] = SDK_VERSION
+            req['Content-Type'] = "application/x-www-form-urlencoded"
+            req.set_form_data(params)
+            response = @https.request(req)
 
             case response
             when Net::HTTPSuccess
@@ -88,74 +95,60 @@ class Meli
         end
     end
 
+
     #REQUEST METHODS
-    def execute(verb, path, body = nil , params = {})
-
-        params["access_token"] = @access_token if params["access_token"]
-
-        # Making Path and add a leading / if not exist
-        path = "/#{path}" unless path =~ /^\//
-        path = "#{path}?#{to_url_params(params)}" if params.keys.size > 0 and (verb == 'GET' or verb == 'DELETE' or verb == 'OPTIONS')
-        path = "#{API_ROOT_URL}#{path}" unless path =~ /^http/
-
-        uri = URI.parse path
-
-        @http.start do |http|
-            case verb
-            when 'GET'
-                req = Net::HTTP::Get.new(uri.path)
-                req['Accept'] = 'application/json'
-                req['User-Agent'] = SDK_VERSION
-            when 'POST'
-                req = Net::HTTP::Post.new(uri.path)
-                req['Accept'] = 'application/json'
-#                req['Content-Type'] = 'application/json'
-                req['User-Agent'] = SDK_VERSION
-                req.set_form_data(params)
-            when 'PUT'
-                req = Net::HTTP::Put.new(uri.path)
-                req['Accept'] = 'application/json'
-#                req['Content-Type'] = 'application/json'
-                req['User-Agent'] = SDK_VERSION
-                req.set_form_data(params)
-            when 'DELETE'
-                req = Net::HTTP::Delete.new(uri.path)
-                req['Accept'] = 'application/json'
-                req['User-Agent'] = SDK_VERSION
-            when 'OPTIONS'
-                req = Net::HTTP::Options.new(uri.path)
-                req['Accept'] = 'application/json'
-                req['User-Agent'] = SDK_VERSION
-            end
-
-            response = @http.request(req)
-            response
-        end #do
-    end #def execute
+    def execute(req)
+        req['Accept'] = 'application/json'
+        req['User-Agent'] = SDK_VERSION
+        response = @https.request(req)
+    end
 
     def get(path, params = {})
-        execute('GET', path, nil, params)
+        uri = make_path(path, params)
+        req = Net::HTTP::Get.new(uri.path)
+        execute req
     end
 
     def post(path, body, params = {})
-        execute('POST', path, body, params)
+        uri = make_path(path, params)
+        req = Net::HTTP::Post.new(uri.path)
+        req.set_form_data(params)
+        req['Content-Type'] = 'application/json' unless body.nil?
+        execute req
     end
 
     def put(path, body, params = {})
-        execute('PUT', path, body, params)
+        uri = make_path(path, params)
+        req = Net::HTTP::Put.new(uri.path)
+        req.set_form_data(params)
+        req['Content-Type'] = 'application/json' unless body.nil?
+        execute req
     end
 
     def delete(path, params = {})
-        execute('DELETE', path, nil, params)
+        uri = make_path(path, params)
+        req = Net::HTTP::Delete.new(uri.path)
+        execute req
     end
 
     def options(path, params = {})
-        execute('OPTIONS', path, nil, params)
+        uri = make_path(path, params)
+        req = Net::HTTP::Options.new(uri.path)
+        execute req
     end
 
 private
     def to_url_params(params)
       URI.escape(params.collect{|k,v| "#{k}=#{v}"}.join('&'))
     end
+
+    def make_path(path, params = {})
+        # Making Path and add a leading / if not exist
+        path = "/#{path}" unless path =~ /^\//
+        path = "#{path}?#{to_url_params(params)}" if params.keys.size > 0
+        path = "#{API_ROOT_URL}#{path}" unless path =~ /^http/
+        uri = URI.parse path
+    end
+
 
 end  #class
