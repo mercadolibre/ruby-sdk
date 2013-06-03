@@ -1,12 +1,19 @@
-ruby-sdk
-========
+# MercadoLibre's Ruby SDK
 
-MercadoLibre's Ruby SDK
+This is the official Java SDK for MercadoLibre's Platform.
 
 ## How do I install it?
 
-       Download or clone repository
+       clone repository
        https://github.com/mercadolibre/ruby-sdk.git
+
+Include the lib meli in your project
+
+```ruby
+require 'lib/meli'
+```
+
+Start the development!
 
 ## How do I use it?
 
@@ -39,7 +46,7 @@ This will give you the url to redirect the user. You need to specify a callback 
 Once the user is redirected to your callback url, you'll receive in the query string, a parameter named ```code```. You'll need this for the second part of the process.
 
 ```ruby
-meli.authorize("the received code", "http://somecallbackurl");
+meli.authorize("the received code", "http://somecallbackurl")
 ```
 
 This will get an ```access_token``` and a ```refresh_token``` (is case your application has the ```offline_access```) for your application and your user.
@@ -50,7 +57,16 @@ At this stage your are ready to make call to the API on behalf of the user.
 
 ```ruby
 params = {:access_token => meli.access_token}
-response = meli.get("/users/me", params);
+response = meli.get("/users/me", params)
+```
+
+The response body will not be converted into json
+Look this simple way to resolve this:
+
+```ruby
+ #convert json into a ruby hash
+resp_hash = JSON.parse response.body
+puts resp_hahs["KEY"]
 ```
 
 #### Making POST calls
@@ -61,7 +77,7 @@ params = {:access_token => meli.access_token}
  #we are cool, the sdk will convert this body into json for you
 body = {:foo => "bar", :bar => "foo"}
 
-response = meli.post("/items", body, params);
+response = meli.post("/items", body, params)
 ```
 
 #### Making PUT calls
@@ -72,13 +88,13 @@ params = {:access_token => meli.access_token}
  #we are cool, the sdk will convert this body into json for you
 body = {:foo => "bar", :bar => "foo"}
 
-response = meli.put("/items", body, params);
+response = meli.put("/items", body, params)
 ```
 
 #### Making DELETE calls
 ```ruby
 params = {:access_token => meli.access_token}
-response = meli.delete("/items/123", params);
+response = meli.delete("/items/123", params)
 ```
 
 ## Community
