@@ -63,7 +63,7 @@ class Meli
 
     end
 
-    def refresh_token()
+    def get_refresh_token()
         if !@refresh_token.nil? and !@refresh_token.empty?
             params = {:grant_type => 'refresh_token', :client_id => @app_id, :client_secret => @secret, :refresh_token => @refresh_token}
 
