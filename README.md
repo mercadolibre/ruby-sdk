@@ -87,7 +87,7 @@ params = {:access_token => meli.access_token}
  #we are cool, the sdk will convert this body into json for you
 body = {:foo => "bar", :bar => "foo"}
 
-response = meli.put("/items", body, params)
+response = meli.put("/items/123", body, params)
 ```
 
 #### Making DELETE calls
