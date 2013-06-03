@@ -22,7 +22,7 @@ Start the development!
 ### Create an instance of MeliCore class
 Simple like this
 ```ruby
-meli = Meli.new(1234, "a secret");
+meli = Meli.new(1234, "a secret")
 ```
 With this instance you can start working on MercadoLibre's APIs.
 
@@ -39,7 +39,7 @@ This is a 2 step process.
 First get the link to redirect the user. This is very easy! Just:
 
 ```ruby
-redirectUrl = meli.auth_url("http://somecallbackurl");
+redirectUrl = meli.auth_url("http://somecallbackurl")
 ```
 
 This will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process.
