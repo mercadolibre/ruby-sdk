@@ -32,6 +32,12 @@ There are some design considerations worth to mention.
 
 2. There is JSON parsing.this SDK will include [json](http://rubygems.org/gems/json) gem for internal usage.
 
+3. If you already have the access_token and the refresh_token you can pass in the constructor
+
+```ruby
+meli = Meli.new(1234, "a secret", "Access_Token", "Refresh_Token")
+```
+
 ## How do I redirect users to authorize my application?
 
 This is a 2 step process.
