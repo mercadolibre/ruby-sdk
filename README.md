@@ -7,6 +7,11 @@ This is the official Java SDK for MercadoLibre's Platform.
        clone repository
        https://github.com/mercadolibre/ruby-sdk.git
 
+## How do I use it?
+
+The first thing to do is to instance a ```Meli``` class. You'll need to give a ```clientId``` and a ```clientSecret```. You can obtain both after creating your own application. For more information on this please read: [creating an application](http://developers.mercadolibre.com/creating-your-own-application/)
+
+### Including the Lib
 Include the lib meli in your project
 
 ```ruby
@@ -14,10 +19,6 @@ require 'lib/meli'
 ```
 
 Start the development!
-
-## How do I use it?
-
-The first thing to do is to instance a ```Meli``` class. You'll need to give a ```clientId``` and a ```clientSecret```. You can obtain both after creating your own application. For more information on this please read: [creating an application](http://developers.mercadolibre.com/creating-your-own-application/)
 
 ### Create an instance of MeliCore class
 Simple like this
