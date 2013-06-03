@@ -46,10 +46,9 @@ class Meli
         case response
         when Net::HTTPSuccess
             response_info = JSON.parse response.body
-            STDERR.puts response_info.inspect
-
             #convert hash keys to symbol
-            Hash[response_info.map{ |k, v| [k.to_sym, v] }]
+            response_info = Hash[response_info.map{ |k, v| [k.to_sym, v] }]
+
             @access_token = response_info[:access_token]
             if response_info.has_key?(:refresh_token)
                 @refresh_token = response_info[:refresh_token]
@@ -82,7 +81,7 @@ class Meli
                 response_info = JSON.parse response.body
 
                 #convert hash keys to symbol
-                Hash[response_info.map{ |k, v| [k.to_sym, v] }]
+                response_info = Hash[response_info.map{ |k, v| [k.to_sym, v] }]
 
                 @access_token = response_info[:access_token]
                 @refresh_token = response_info[:refresh_token]
@@ -100,6 +99,7 @@ class Meli
     def execute(req)
         req['Accept'] = 'application/json'
         req['User-Agent'] = SDK_VERSION
+        req['Content-Type'] = 'application/json'
         response = @https.request(req)
     end
 
@@ -113,7 +113,6 @@ class Meli
         uri = make_path(path, params)
         req = Net::HTTP::Post.new(uri.path)
         req.set_form_data(params)
-        req['Content-Type'] = 'application/json' unless body.nil?
         execute req
     end
 
@@ -121,7 +120,6 @@ class Meli
         uri = make_path(path, params)
         req = Net::HTTP::Put.new(uri.path)
         req.set_form_data(params)
-        req['Content-Type'] = 'application/json' unless body.nil?
         execute req
     end
 
