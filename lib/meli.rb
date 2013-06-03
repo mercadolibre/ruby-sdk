@@ -113,6 +113,7 @@ class Meli
         uri = make_path(path, params)
         req = Net::HTTP::Post.new(uri.path)
         req.set_form_data(params)
+        req.body = body.to_json unless body.nil?
         execute req
     end
 
@@ -120,6 +121,7 @@ class Meli
         uri = make_path(path, params)
         req = Net::HTTP::Put.new(uri.path)
         req.set_form_data(params)
+        req.body = body.to_json unless body.nil?
         execute req
     end
 
