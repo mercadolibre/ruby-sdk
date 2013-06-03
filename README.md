@@ -97,6 +97,11 @@ params = {:access_token => meli.access_token}
 response = meli.delete("/items/123", params)
 ```
 
+## Examples
+
+Don't forget to check out our examples codes in the folder [examples](https://github.com/mercadolibre/ruby-sdk/tree/master/examples)
+
+
 ## Community
 
 You can contact us if you have questions using the standard communication channels described in the [developer's site](http://developers.mercadolibre.com/discuss)
