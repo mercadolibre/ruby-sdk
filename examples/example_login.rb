@@ -14,5 +14,5 @@ get '/authorize' do
 end
 
 get '/login' do
-    "<a href='#{settings.meli.auth_url("http://localhost:4567/authorize")}'>Login</a>"
+    "<a href='#{settings.meli.auth_url(CALLBACK_AUTHORIZE)}'>Login</a>"
 end
