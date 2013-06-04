@@ -3,15 +3,17 @@ require 'net/http'
 require 'net/https'
 require 'json'
 require 'uri'
+require 'yaml'
 
 class Meli
     attr_accessor :access_token, :refresh_token
     attr_reader :secret, :app_id, :https
 
-    SDK_VERSION = "MELI-RUBY-SDK-1.0.0"
-    API_ROOT_URL = 'https://api.mercadolibre.com' #SHOULD NOT HAVE PREECEDING HTTP://
-    AUTH_URL = 'https://auth.mercadolibre.com/authorization'
-    OAUTH_URL = '/oauth/token'
+    config = YAML.load_file(File.expand_path(File.dirname(__FILE__) + "/config.yml"))
+    SDK_VERSION = config["config"]["sdk_version"]
+    API_ROOT_URL = config["config"]["api_root_url"]
+    AUTH_URL = config["config"]["auth_url"]
+    OAUTH_URL = config["config"]["oauth_url"]
 
     #constructor
     def initialize(app_id = nil, secret = nil, access_token = nil, refresh_token = nil)
