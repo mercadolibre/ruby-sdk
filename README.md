@@ -19,7 +19,7 @@ require 'lib/meli'
 ```
 Start the development!
 
-### Create an instance of MeliCore class
+### Create an instance of Meli class
 Simple like this
 ```ruby
 meli = Meli.new(1234, "a secret")
