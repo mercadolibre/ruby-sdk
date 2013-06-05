@@ -30,7 +30,7 @@ There are some design considerations worth to mention.
 
 1. This SDK is just a thin layer on top of an http client to handle all the OAuth WebServer flow for you.
 
-2. There is JSON parsing.this SDK will include [json](http://rubygems.org/gems/json) gem for internal usage.
+2. There is JSON parsing. this SDK will include [json](http://rubygems.org/gems/json) gem for internal usage.
 
 3. If you already have the access_token and the refresh_token you can pass in the constructor
 
@@ -102,7 +102,7 @@ response = meli.put("/items/123", body, params)
 #### Making DELETE calls
 ```ruby
 params = {:access_token => meli.access_token}
-response = meli.delete("/items/123", params)
+response = meli.delete("/questions/123", params)
 ```
 
 ## Examples
