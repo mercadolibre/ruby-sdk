@@ -37,7 +37,6 @@ describe Meli do
 
     describe "http methods" do
         before(:each) do
-            @meli.https.stub(:request){Net::HTTPOK.new(200, "OK", nil)}
             @meli.https.stub(:request) do |req|
                 case req.method
                 when "GET"
