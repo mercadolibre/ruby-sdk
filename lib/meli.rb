@@ -107,13 +107,13 @@ class Meli
 
     def get(path, params = {})
         uri = make_path(path, params)
-        req = Net::HTTP::Get.new(uri.path)
+        req = Net::HTTP::Get.new("#{uri.path}?#{uri.query}")
         execute req
     end
 
     def post(path, body, params = {})
         uri = make_path(path, params)
-        req = Net::HTTP::Post.new(uri.path)
+        req = Net::HTTP::Post.new("#{uri.path}?#{uri.query}")
         req.set_form_data(params)
         req.body = body.to_json unless body.nil?
         execute req
@@ -121,7 +121,7 @@ class Meli
 
     def put(path, body, params = {})
         uri = make_path(path, params)
-        req = Net::HTTP::Put.new(uri.path)
+        req = Net::HTTP::Put.new("#{uri.path}?#{uri.query}")
         req.set_form_data(params)
         req.body = body.to_json unless body.nil?
         execute req
@@ -129,13 +129,13 @@ class Meli
 
     def delete(path, params = {})
         uri = make_path(path, params)
-        req = Net::HTTP::Delete.new(uri.path)
+        req = Net::HTTP::Delete.new("#{uri.path}?#{uri.query}")
         execute req
     end
 
     def options(path, params = {})
         uri = make_path(path, params)
-        req = Net::HTTP::Options.new(uri.path)
+        req = Net::HTTP::Options.new("#{uri.path}?#{uri.query}")
         execute req
     end
 

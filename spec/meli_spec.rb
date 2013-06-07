@@ -8,7 +8,7 @@ describe Meli do
         @access_token = "access_token"
         @refresh_token = "refresh_token"
 
-       @meli = Meli.new @client_id, @secret_code, @access_token, @refresh_token
+        @meli = Meli.new @client_id, @secret_code, @access_token, @refresh_token
     end
 
     describe "#new" do
@@ -38,6 +38,40 @@ describe Meli do
     describe "http methods" do
         before(:each) do
             @meli.https.stub(:request){Net::HTTPOK.new(200, "OK", nil)}
+            @meli.https.stub(:request) do |req|
+                case req.method
+                when "GET"
+                    if req.path =~ /\/users\/me/
+                        if req.path =~ /access_token/
+                            Net::HTTPOK.new(200, "OK", nil)
+                        else
+                            Net::HTTPForbidden.new(403, "Forbidden", nil)
+                        end
+                    else
+                        Net::HTTPOK.new(200, "OK", nil)
+                    end
+                when "POST"
+                     if req.path =~ /access_token/
+                        Net::HTTPOK.new(200, "OK", nil)
+                    else
+                        Net::HTTPForbidden.new(403, "Forbidden", nil)
+                    end
+                when "PUT"
+                    if req.path =~ /access_token/
+                        Net::HTTPOK.new(200, "OK", nil)
+                    else
+                        Net::HTTPForbidden.new(403, "Forbidden", nil)
+                    end
+                when "DELETE"
+                    if req.path =~ /access_token/
+                        Net::HTTPOK.new(200, "OK", nil)
+                    else
+                        Net::HTTPForbidden.new(403, "Forbidden", nil)
+                    end
+                else
+                    Net::HTTPInternalServerError.new(500, "Internal Server Error", nil)
+                end
+            end
         end
         it "should return a reponse from get" do
             response = @meli.get("/items/test1")
@@ -59,24 +93,23 @@ describe Meli do
                 "pictures"=>[{"source"=>"http://upload.wikimedia.org/wikipedia/commons/f/fd/Ray_Ban_Original_Wayfarer.jpg"},
                             {"source"=>"http://en.wikipedia.org/wiki/File:Teashades.gif"}]
             }
-            response = @meli.post("/items/test1", body)
+            response = @meli.post("/items/test1", body, {:access_token => @meli.access_token})
             response.should be_an_instance_of Net::HTTPOK
         end
         it "should return a reponse from put" do
             body = {"title"=>"New Title", "price"=>1000}
-            response = @meli.put("/items/test1", body)
+            response = @meli.put("/items/test1", body, {:access_token => @meli.access_token})
             response.should be_an_instance_of Net::HTTPOK
         end
         it "should return a reponse from delete" do
-            response = @meli.delete("/questions/123")
+            response = @meli.delete("/questions/123", {:access_token => @meli.access_token})
             response.should be_an_instance_of Net::HTTPOK
         end
-        it "should return forbidden without access_token" do
-            @meli.https.stub(:request){Net::HTTPForbidden.new(403, "Forbidden", nil)}
+        it "get should return forbidden without access_token" do
             response = @meli.get("/users/me")
             response.should be_an_instance_of Net::HTTPForbidden
         end
-        it "should return OK with access_token" do
+        it "get should return OK with access_token" do
             response = @meli.get("/users/me", {:access_token => @meli.access_token})
             response.should be_an_instance_of Net::HTTPOK
         end
