@@ -37,29 +37,42 @@ describe Meli do
 
     describe "http methods" do
         before(:each) do
-            @meli.stub(:get) {Net::HTTPOK.new(200, "OK", nil)}
-            @meli.stub(:post) {Net::HTTPOK.new(200, "OK", nil)}
-            @meli.stub(:put) {Net::HTTPOK.new(200, "OK", nil)}
-            @meli.stub(:delete) {Net::HTTPOK.new(200, "OK", nil)}
+            @meli.https.stub(:request){Net::HTTPOK.new(200, "OK", nil)}
         end
         it "should return a reponse from get" do
             response = @meli.get("/items/test1")
             response.should be_an_instance_of Net::HTTPOK
         end
         it "should return a reponse from post" do
-            response = @meli.post("/items/test1")
+        body = {"condition"=>"new",
+                "warranty"=>"60 dias",
+                "currency_id"=>"BRL",
+                "accepts_mercadopago"=>true,
+                "description"=>"Lindo Ray_Ban_Original_Wayfarer",
+                "listing_type_id"=>"bronze",
+                "title"=>"\303\223culos Ray Ban Aviador  Que Troca As Lentes  Lan\303\247amento!",
+                "available_quantity"=>64,
+                "price"=>289,
+                "subtitle"=>"Acompanha 3 Pares De Lentes!! Compra 100% Segura",
+                "buying_mode"=>"buy_it_now",
+                "category_id"=>"MLB5125",
+                "pictures"=>[{"source"=>"http://upload.wikimedia.org/wikipedia/commons/f/fd/Ray_Ban_Original_Wayfarer.jpg"},
+                            {"source"=>"http://en.wikipedia.org/wiki/File:Teashades.gif"}]
+            }
+            response = @meli.post("/items/test1", body)
             response.should be_an_instance_of Net::HTTPOK
         end
         it "should return a reponse from put" do
-            response = @meli.put("/items/test1")
+            body = {"title"=>"New Title", "price"=>1000}
+            response = @meli.put("/items/test1", body)
             response.should be_an_instance_of Net::HTTPOK
         end
         it "should return a reponse from delete" do
-            response = @meli.delete("/items/test1")
+            response = @meli.delete("/questions/123")
             response.should be_an_instance_of Net::HTTPOK
         end
         it "should return forbidden without access_token" do
-            @meli.stub(:get) {Net::HTTPForbidden.new(403, "Forbidden", nil)}
+            @meli.https.stub(:request){Net::HTTPForbidden.new(403, "Forbidden", nil)}
             response = @meli.get("/users/me")
             response.should be_an_instance_of Net::HTTPForbidden
         end
