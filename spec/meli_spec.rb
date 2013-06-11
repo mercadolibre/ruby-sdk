@@ -7,9 +7,64 @@ describe Meli do
         @secret_code = "a secret"
         @access_token = "access_token"
         @refresh_token = "refresh_token"
+        @new_access_token = "a new access_token"
+        @new_refresh_token = "a new refresh_token"
 
         @meli = Meli.new @client_id, @secret_code, @access_token, @refresh_token
-    end
+
+        @meli.https.stub(:request) do |req|
+            case req.method
+            when "GET"
+                if req.path =~ /\/users\/me/
+                    if req.path =~ /access_token/
+                        Net::HTTPOK.new(1, 200, "OK")
+                    else
+                        Net::HTTPForbidden.new(1, 403, "Forbidden")
+                    end
+                else
+                    Net::HTTPOK.new(1, 200, "OK")
+                end
+            when "POST"
+                if req.path =~ /\/oauth\/token/
+                    if !req.path =~ /grant_type/ || !req.path =~ /client_id/ || !req.path =~ /client_secret/
+                        Net::HTTPForbidden.new(1, 403, "Forbidden")
+                    else
+                        response = Net::HTTPOK.new(1, 200, "OK")
+                        if req.body =~ /grant_type=authorization_code/
+                            def response.body
+                                {:access_token => 'access_token', :refresh_token => 'refresh_token'}.to_json
+                            end
+                        elsif req.body =~ /grant_type=refresh_token/
+                            def response.body
+                                {:access_token => 'a new access_token', :refresh_token => 'a new refresh_token'}.to_json
+                            end
+                        end
+                    end
+                    response
+                else
+                    if req.path =~ /access_token/
+                        Net::HTTPOK.new(1, 200, "OK")
+                    else
+                        Net::HTTPForbidden.new(1, 403, "Forbidden")
+                    end
+                end
+            when "PUT"
+                if req.path =~ /access_token/
+                    Net::HTTPOK.new(1, 200, "OK")
+                else
+                    Net::HTTPForbidden.new(1, 403, "Forbidden")
+                end
+            when "DELETE"
+                if req.path =~ /access_token/
+                    Net::HTTPOK.new(1, 200, "OK")
+                else
+                    Net::HTTPForbidden.new(1, 403, "Forbidden")
+                end
+            else
+                Net::HTTPInternalServerError.new(1, 500, "Internal Server Error")
+            end
+        end #stub
+    end #before each
 
     describe "#new" do
         it "should return a Meli object" do
@@ -36,42 +91,6 @@ describe Meli do
     end
 
     describe "http methods" do
-        before(:each) do
-            @meli.https.stub(:request) do |req|
-                case req.method
-                when "GET"
-                    if req.path =~ /\/users\/me/
-                        if req.path =~ /access_token/
-                            Net::HTTPOK.new(200, "OK", nil)
-                        else
-                            Net::HTTPForbidden.new(403, "Forbidden", nil)
-                        end
-                    else
-                        Net::HTTPOK.new(200, "OK", nil)
-                    end
-                when "POST"
-                     if req.path =~ /access_token/
-                        Net::HTTPOK.new(200, "OK", nil)
-                    else
-                        Net::HTTPForbidden.new(403, "Forbidden", nil)
-                    end
-                when "PUT"
-                    if req.path =~ /access_token/
-                        Net::HTTPOK.new(200, "OK", nil)
-                    else
-                        Net::HTTPForbidden.new(403, "Forbidden", nil)
-                    end
-                when "DELETE"
-                    if req.path =~ /access_token/
-                        Net::HTTPOK.new(200, "OK", nil)
-                    else
-                        Net::HTTPForbidden.new(403, "Forbidden", nil)
-                    end
-                else
-                    Net::HTTPInternalServerError.new(500, "Internal Server Error", nil)
-                end
-            end
-        end
         it "should return a reponse from get" do
             response = @meli.get("/items/test1")
             response.should be_an_instance_of Net::HTTPOK
@@ -124,5 +143,22 @@ describe Meli do
         end
     end
 
+    describe "Authorize" do
+        it "should return Access Token" do
+            @meli.access_token = nil
+            @meli.refresh_token = nil
+            @meli.authorize("a code from get param", "A redirect Uri")
+            @meli.access_token.should == @access_token
+            @meli.refresh_token.should == @refresh_token
+        end
+    end
+
+    describe "Refresh Token" do
+        it "should return new Access Token and a new Refresh Token" do
+            response = @meli.get_refresh_token()
+            @meli.access_token.should == @new_access_token
+            @meli.refresh_token == @new_refresh_token
+        end
+    end
 
 end
