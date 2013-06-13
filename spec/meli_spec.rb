@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'spec_helper'
 
 describe Meli do
@@ -66,6 +68,12 @@ describe Meli do
         end #stub
     end #before each
 
+    describe "Requireds Gems" do
+        it "should have json gem version 1.8.0" do
+            Gem::Specification::find_all_by_name('json').any?.should be_true
+        end
+    end
+
     describe "#new" do
         it "should return a Meli object" do
             @meli.should be_an_instance_of Meli
@@ -86,7 +94,7 @@ describe Meli do
             @meli.https.should be_an_instance_of Net::HTTP
         end
         it "should have a http service with ssl" do
-            @meli.https.use_ssl.should be_true
+            @meli.https.use_ssl?.should be_true
         end
     end
 

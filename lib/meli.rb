@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'rubygems'
 require 'net/http'
 require 'net/https'
@@ -23,8 +25,8 @@ class Meli
         @secret = secret
         api_url = URI.parse API_ROOT_URL
         @https = Net::HTTP.new(api_url.host, api_url.port)
-        @https.verify_mode = OpenSSL::SSL::VERIFY_NONE
         @https.use_ssl = true
+        @https.verify_mode = OpenSSL::SSL::VERIFY_NONE
     end
 
     #AUTH METHODS
