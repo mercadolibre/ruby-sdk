@@ -27,6 +27,7 @@ class Meli
         @https = Net::HTTP.new(api_url.host, api_url.port)
         @https.use_ssl = true
         @https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        @https.ssl_version = :SSLv3
     end
 
     #AUTH METHODS
