@@ -1,5 +1,4 @@
 # encoding: UTF-8
-
 require 'rubygems'
 require 'net/http'
 require 'net/https'
