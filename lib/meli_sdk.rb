@@ -1,7 +1,4 @@
 # encoding: UTF-8
-
-% cat lib/meli_sdk.rb
-
 require 'rubygems'
 require 'net/http'
 require 'net/https'
