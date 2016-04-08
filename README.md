@@ -1,4 +1,5 @@
 # MercadoLibre's Ruby SDK
+[![Build Status](https://travis-ci.org/AlfredoBejarano/ruby-sdk.svg?branch=master)](https://travis-ci.org/AlfredoBejarano/ruby-sdk)
 
 This is the official Ruby SDK for MercadoLibre's Platform.
 
@@ -6,9 +7,16 @@ This is the official Ruby SDK for MercadoLibre's Platform.
 
        Simply require the SDK's gem
        ```ruby
-       require 'lib/meli'
+       # in the file.rb
+       require 'meli'
+
+       # via bundle
+       gem 'meli'
        ```
 
+       The gem requires Ruby 2.2 or superior.
+
+       check the [Gem Page](https://rubygems.org/gems/meli) at RubyGems.org
        Start the development!
 
 
@@ -106,6 +114,10 @@ response = meli.delete("/questions/123", params)
 ## Examples
 
 Don't forget to check out our examples codes in the folder [examples](https://github.com/mercadolibre/ruby-sdk/tree/master/examples)
+
+[GET simple example console program](https://github.com/AlfredoBejarano/MercadoLibre-Ruby-SDK-Example)
+
+[Ruby on Rails GET example](https://github.com/AlfredoBejarano/MercadoLibre-Ruby-SDK-Example-Rails-Edition)
 
 ## Community
 
