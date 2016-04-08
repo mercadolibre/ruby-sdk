@@ -5,20 +5,17 @@ This is the official Ruby SDK for MercadoLibre's Platform.
 
 ## How do I install it?
 
-       Simply require the SDK's gem
-       ```ruby
-       # in the file.rb
-       require 'meli'
+```ruby
+  # in the file.rb
+  require 'meli'
 
-       # via bundle
-       gem 'meli'
-       ```
+  # and in your Gemfile
+  gem 'meli'
+```
+The gem requires Ruby 2.2 or superior.
 
-       The gem requires Ruby 2.2 or superior.
-
-       check the [Gem Page](https://rubygems.org/gems/meli) at RubyGems.org
+Check the [Gem Page](https://rubygems.org/gems/meli) at RubyGems.org
        Start the development!
-
 
 ## How do I use it?
 
