@@ -1,7 +1,8 @@
 #!/usr/bin/ruby
 
+require 'bundler/setup'
 require 'rubygems'
-require '../lib/meli'
+require 'meli'
 
 meli = Meli.new(CLIENT_ID, CLIENT_SECRET, ACCESS_TOKEN, REFRESH_TOKEN)
 

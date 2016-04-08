@@ -4,20 +4,18 @@ This is the official Ruby SDK for MercadoLibre's Platform.
 
 ## How do I install it?
 
-       clone repository
-       https://github.com/mercadolibre/ruby-sdk.git
+       Simply require the SDK's gem
+       ```ruby
+       require 'lib/meli'
+       ```
+
+       Start the development!
+
 
 ## How do I use it?
 
 The first thing to do is to instance a ```Meli``` class. You'll need to give a ```clientId``` and a ```clientSecret```. You can obtain both after creating your own application. For more information on this please read: [creating an application](http://developers.mercadolibre.com/application-manager/)
 
-### Including the Lib
-Include the lib meli in your project
-
-```ruby
-require 'lib/meli'
-```
-Start the development!
 
 ### Create an instance of Meli class
 Simple like this

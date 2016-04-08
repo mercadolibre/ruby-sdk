@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 require 'rubygems'
+require 'bundler/setup'
 require 'net/http'
 require 'net/https'
 require 'json'
