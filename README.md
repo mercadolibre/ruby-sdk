@@ -14,8 +14,9 @@ This is the official Ruby SDK for MercadoLibre's Platform.
 ```
 The gem requires Ruby 2.2 or superior.
 
-Check the [Gem Page](https://rubygems.org/gems/meli) at RubyGems.org
-       Start the development!
+Check the [Gem Page](https://rubygems.org/gems/meli) at RubyGems.org.
+
+Start the development!
 
 ## How do I use it?
 
