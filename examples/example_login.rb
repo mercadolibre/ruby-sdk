@@ -11,7 +11,9 @@ get '/authorize' do
   content_type :text
   settings.meli.authorize(params['code'], CALLBACK_URI) if params['code']
   # Don't Forget to Save this data!
-  "SUCESS! Token: #{settings.meli.access_token} RefresToken: #{settings.meli.refresh_token}"
+  "SUCESS! Token:
+  #{settings.meli.access_token}
+  RefresToken: #{settings.meli.refresh_token}"
 end
 
 get '/login' do

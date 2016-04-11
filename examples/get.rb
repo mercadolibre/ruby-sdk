@@ -7,7 +7,7 @@ require 'json'
 
 meli = Meli.new(CLIENT_ID, CLIENT_SECRET, ACCESS_TOKEN, REFRESH_TOKEN)
 
-response = meli.get(''/items/MLB488622999')
+response = meli.get('/items/MLB488622999')
 
 # Json format
 puts response.body
