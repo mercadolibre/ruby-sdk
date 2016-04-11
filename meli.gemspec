@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'meli'
-  s.version = '1.0.3'
+  s.version = '1.0.3.1'
   s.date = '2016-04-11'
   s.summary = 'meli'
   s.description = 'Gem for accesing MercadoLibre API'
