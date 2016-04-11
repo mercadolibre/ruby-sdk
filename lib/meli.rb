@@ -8,8 +8,6 @@ require 'json'
 require 'uri'
 require 'yaml'
 
-# rubocop:disable MethodLength
-# rubocop:disable ClassLength
 # This class is the actual library
 class Meli
   attr_accessor :access_token, :refresh_token
