@@ -1,5 +1,6 @@
 # MercadoLibre's Ruby SDK
 [![Build Status](https://travis-ci.org/AlfredoBejarano/ruby-sdk.svg?branch=master)](https://travis-ci.org/AlfredoBejarano/ruby-sdk)
+[![Gem Version](https://badge.fury.io/rb/meli.svg&color=e9573f)](https://badge.fury.io/rb/meli)
 
 This is the official Ruby SDK for MercadoLibre's Platform.
 
