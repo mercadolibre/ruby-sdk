@@ -1,5 +1,21 @@
 config:
-    sdk_version: MELI-RUBY-SDK-1.0.0
+    sdk_version: MELI-RUBY-SDK-1.0.1
     api_root_url: https://api.mercadolibre.com
-    auth_url: https://auth.mercadolibre.com/authorization
+    auth_url: https://auth.mercadolivre.com.br/authorization # # Don't forget to set the URL of your country.
     oauth_url: /oauth/token
+
+# Set the auth_url according to your country
+
+#MLA https://auth.mercadolibre.com.ar/authorization  # Argentina 
+#MLB https://auth.mercadolivre.com.br/authorization  # Brasil
+#MCO https://auth.mercadolibre.com.co/authorization  # Colombia
+#MCR https://auth.mercadolibre.com.cr/authorization  # Costa Rica
+#MEC https://auth.mercadolibre.com.ec/authorization  # Ecuador
+#MLC https://auth.mercadolibre.com.cl/authorization  # Chile
+#MLM https://auth.mercadolibre.com.mx/authorization  # Mexico
+#MLU https://auth.mercadolibre.com.uy/authorization  # Uruguay
+#MLV https://auth.mercadolibre.com.ve/authorization  # Venezuela
+#MPA https://auth.mercadolibre.com.pa/authorization  # Panama
+#MPE https://auth.mercadolibre.com.pe/authorization  # Peru
+#MPT https://auth.mercadolibre.com.pt/authorization  # Prtugal
+#MRD https://auth.mercadolibre.com.do/authorization  # Dominicana

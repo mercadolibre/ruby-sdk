@@ -14,6 +14,9 @@ The first thing to do is to instance a ```Meli``` class. You'll need to give a `
 ### Including the Lib
 Include the lib meli in your project
 
+### Attention
+Don't forget to set the authentication URL of your country in file lib/config.yml
+
 ```ruby
 require 'lib/meli'
 ```
