@@ -14,11 +14,6 @@ Gem::Specification.new do |spec|
   spec.homepage = 'http://developers.mercadolibre.com/ruby-sdk/'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.2'
-
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org"
-  end
-
   spec.summary       = "MercadoLibre's Ruby SDK"
   spec.description   = "Gem for using MercadoLibre's resources in your Ruby app"
   spec.homepage      = 'http://developers.mercadolibre.com'
