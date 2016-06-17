@@ -1,7 +1,6 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'meli/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'meli'
@@ -21,7 +20,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.summary       = "MercadoLibre's Ruby SDK"
-  spec.description   = "MercadoLibre's Ruby SDK"
+  spec.description   = "Gem for using MercadoLibre's resources in your Ruby app"
   spec.homepage      = 'http://developers.mercadolibre.com'
   spec.license       = 'MIT'
 
