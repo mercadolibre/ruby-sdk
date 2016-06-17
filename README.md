@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/AlfredoBejarano/ruby-sdk.svg?branch=master)](https://travis-ci.org/AlfredoBejarano/ruby-sdk)
 [![Gem Version](https://badge.fury.io/rb/meli.svg)](https://badge.fury.io/rb/meli)
 
-This is the official Ruby SDK for MercadoLibre's Platform.
+This is fork from the [Ruby SDK for MercadoLibre's Platform](https://github.com/mercadolibre/ruby-sdk).
 
 ## How do I install it?
 
