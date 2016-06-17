@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name = 'meli'
-  spec.version = '1.0.3.2'
-  spec.date = '2016-04-11'
+  spec.version = '1.0.3.3'
+  spec.date = '2016-06-17'
   spec.summary = 'meli'
   spec.description = 'Gem for accesing MercadoLibre API'
   spec.authors = ['Alfredo Bejarano']
