@@ -11,7 +11,7 @@ config:
 #MCO https://auth.mercadolibre.com.co/authorization  # Colombia
 #MCR https://auth.mercadolibre.com.cr/authorization  # Costa Rica
 #MEC https://auth.mercadolibre.com.ec/authorization  # Ecuador
-#MLC https://auth.mercadolibre.com.cl/authorization  # Chile
+#MLC https://auth.mercadolibre.cl/authorization  # Chile
 #MLM https://auth.mercadolibre.com.mx/authorization  # Mexico
 #MLU https://auth.mercadolibre.com.uy/authorization  # Uruguay
 #MLV https://auth.mercadolibre.com.ve/authorization  # Venezuela
