@@ -58,7 +58,7 @@ This is a 2 step process.
 First get the link to redirect the user. This is very easy! Just:
 
 ```ruby
-redirect_url = meli.auth_url("http://somecallbackurl”, “AR”)
+redirect_url = meli.auth_url("http://somecallbackurl", "AR")
 ```
 
 This will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process. 
