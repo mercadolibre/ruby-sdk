@@ -5,17 +5,11 @@ require 'net/http'
 require 'net/https'
 require 'json'
 require 'uri'
-require 'yaml'
+require 'constants'
 
 class Meli
     attr_accessor :access_token, :refresh_token
     attr_reader :secret, :app_id, :https
-
-    config = YAML.load_file(File.expand_path(File.dirname(__FILE__) + "/config.yml"))
-    SDK_VERSION = config["config"]["sdk_version"]
-    API_ROOT_URL = config["config"]["api_root_url"]
-    AUTH_URL = config["config"]["auth_url"]
-    OAUTH_URL = config["config"]["oauth_url"]
 
     #constructor
     def initialize(app_id = nil, secret = nil, access_token = nil, refresh_token = nil)
@@ -29,11 +23,15 @@ class Meli
         @https.verify_mode = OpenSSL::SSL::VERIFY_PEER
         @https.ssl_version = :TLSv1
     end
+    
+    def self.auth_url_country(iso_country_code)
+      const_get "AUTH_URL_#{iso_country_code}"
+    end
 
     #AUTH METHODS
-    def auth_url(redirect_URI)
+    def auth_url(redirect_URI, iso_country_code = "BR")
         params = {:client_id  => @app_id, :response_type => 'code', :redirect_uri => redirect_URI}
-        url = "#{AUTH_URL}?#{to_url_params(params)}"
+        url = "#{Meli.auth_url_country(iso_country_code)}?#{to_url_params(params)}"
     end
 
     def authorize(code, redirect_URI)
