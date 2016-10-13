@@ -58,10 +58,11 @@ This is a 2 step process.
 First get the link to redirect the user. This is very easy! Just:
 
 ```ruby
-redirectUrl = meli.auth_url("http://somecallbackurl")
+redirect_url = meli.auth_url("http://somecallbackurl”, “AR”)
 ```
 
-This will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process.
+This will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process. 
+The country code param (`"AR"`) is optional, it’s set to `"BR"` by default. Take into account that if you don’t specify this, it will only work if your MercadoLibre app is from Brazil.
 
 Once the user is redirected to your callback url, you'll receive in the query string, a parameter named ```code```. You'll need this for the second part of the process.
 
