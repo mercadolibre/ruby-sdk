@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Meli do
 
-    before(:each) do
+    before do
         @client_id = "1234567"
         @secret_code = "a secret"
         @access_token = "access_token"
@@ -70,38 +70,38 @@ describe Meli do
 
     describe "Requireds Gems" do
         it "should have json gem version 1.8.0" do
-            Gem::Specification::find_all_by_name('json').any?.should be_true
+            expect(Gem::Specification::find_all_by_name('json').any?).to be_truthy
         end
     end
 
     describe "#new" do
         it "should return a Meli object" do
-            @meli.should be_an_instance_of Meli
+            expect(@meli).to be_an_instance_of Meli
         end
         it "should return corret app_id" do
-            @meli.app_id.should == @client_id
+            expect(@meli.app_id).to eq @client_id
         end
         it "should return corret secret" do
-            @meli.secret.should == @secret_code
+            expect(@meli.secret).to eq @secret_code
         end
         it "should return correct access_token" do
-            @meli.access_token.should == @access_token
+            expect(@meli.access_token).to eq @access_token
         end
         it "should return correct refresh_token" do
-            @meli.refresh_token.should == @refresh_token
+            expect(@meli.refresh_token).to eq @refresh_token
         end
         it "should return a net/http service" do
-            @meli.https.should be_an_instance_of Net::HTTP
+            expect(@meli.https).to be_an_instance_of Net::HTTP
         end
         it "should have a http service with ssl" do
-            @meli.https.use_ssl?.should be_true
+            expect(@meli.https.use_ssl?).to be_truthy
         end
     end
 
     describe "http methods" do
         it "should return a reponse from get" do
             response = @meli.get("/items/test1")
-            response.should be_an_instance_of Net::HTTPOK
+            expect(response).to be_an_instance_of Net::HTTPOK
         end
         it "should return a reponse from post" do
         body = {"condition"=>"new",
@@ -120,34 +120,44 @@ describe Meli do
                             {"source"=>"http://en.wikipedia.org/wiki/File:Teashades.gif"}]
             }
             response = @meli.post("/items/test1", body, {:access_token => @meli.access_token})
-            response.should be_an_instance_of Net::HTTPOK
+            expect(response).to be_an_instance_of Net::HTTPOK
         end
         it "should return a reponse from put" do
             body = {"title"=>"New Title", "price"=>1000}
             response = @meli.put("/items/test1", body, {:access_token => @meli.access_token})
-            response.should be_an_instance_of Net::HTTPOK
+            expect(response).to be_an_instance_of Net::HTTPOK
         end
         it "should return a reponse from delete" do
             response = @meli.delete("/questions/123", {:access_token => @meli.access_token})
-            response.should be_an_instance_of Net::HTTPOK
+            expect(response).to be_an_instance_of Net::HTTPOK
         end
         it "get should return forbidden without access_token" do
             response = @meli.get("/users/me")
-            response.should be_an_instance_of Net::HTTPForbidden
+            expect(response).to be_an_instance_of Net::HTTPForbidden
         end
         it "get should return OK with access_token" do
             response = @meli.get("/users/me", {:access_token => @meli.access_token})
-            response.should be_an_instance_of Net::HTTPOK
+            expect(response).to be_an_instance_of Net::HTTPOK
         end
     end
 
     describe "Auth Url" do
-        it "should return the correct auth url" do
-            callback = "http://test.com/callback"
-            @meli.auth_url(callback).should match "^https\:\/\/auth.mercadolibre.com\/authorization"
-            @meli.auth_url(callback).should match callback
-            @meli.auth_url(callback).should match @client_id
-            @meli.auth_url(callback).should match "response_type"
+        let(:callback) { "http://test.com/callback" }
+        it "should return the correct default auth url (for Brazil)" do
+            expect(@meli.auth_url(callback)).to match "^https\:\/\/auth.mercadolivre.com.br\/authorization"
+            expect(@meli.auth_url(callback)).to match callback
+            expect(@meli.auth_url(callback)).to match @client_id
+            expect(@meli.auth_url(callback)).to match "response_type"
+        end
+        
+        context "with two parameters" do
+            let(:iso_country_code) { "AR" }
+            it "should return the correct auth url according to the country" do
+                expect(@meli.auth_url(callback, iso_country_code)).to match "^https\:\/\/auth.mercadolibre.com.ar\/authorization"
+                expect(@meli.auth_url(callback, iso_country_code)).to match callback
+                expect(@meli.auth_url(callback, iso_country_code)).to match @client_id
+                expect(@meli.auth_url(callback, iso_country_code)).to match "response_type"
+            end
         end
     end
 
@@ -156,16 +166,16 @@ describe Meli do
             @meli.access_token = nil
             @meli.refresh_token = nil
             @meli.authorize("a code from get param", "A redirect Uri")
-            @meli.access_token.should == @access_token
-            @meli.refresh_token.should == @refresh_token
+            expect(@meli.access_token).to eq @access_token
+            expect(@meli.refresh_token).to eq @refresh_token
         end
     end
 
     describe "Refresh Token" do
         it "should return new Access Token and a new Refresh Token" do
-            response = @meli.get_refresh_token()
-            @meli.access_token.should == @new_access_token
-            @meli.refresh_token == @new_refresh_token
+            response = @meli.get_refresh_token
+            expect(@meli.access_token).to eq @new_access_token
+            expect(@meli.refresh_token).to eq @new_refresh_token
         end
     end
 
