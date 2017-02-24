@@ -1,36 +1,28 @@
 # MercadoLibre's Ruby SDK
+[![Build Status](https://travis-ci.org/AlfredoBejarano/ruby-sdk.svg?branch=master)](https://travis-ci.org/AlfredoBejarano/ruby-sdk)
+[![Gem Version](https://badge.fury.io/rb/meli.svg)](https://badge.fury.io/rb/meli)
 
-This is the official Ruby SDK for MercadoLibre's Platform.
+This is fork from the [Ruby SDK for MercadoLibre's Platform](https://github.com/mercadolibre/ruby-sdk).
 
 ## How do I install it?
 
-       clone repository
-       https://github.com/mercadolibre/ruby-sdk.git
+```ruby
+  # in the file.rb
+  require 'meli'
 
-## Using Bundler
+  # and in your Gemfile
+  gem 'meli'
+```
+The gem requires Ruby 2.2 or superior.
 
-Add it to your Gemfile:
+Check the [Gem Page](https://rubygems.org/gems/meli) at RubyGems.org.
 
-    gem 'meli', '~> 0.0.1'
-
-And then install
-
-    bundle install
+Start the development!
 
 ## How do I use it?
 
 The first thing to do is to instance a ```Meli``` class. You'll need to give a ```clientId``` and a ```clientSecret```. You can obtain both after creating your own application. For more information on this please read: [creating an application](http://developers.mercadolibre.com/application-manager/)
 
-### Including the Lib
-Include the lib meli in your project
-
-### Attention
-Don't forget to set the authentication URL of your country in file lib/config.yml
-
-```ruby
-require 'lib/meli'
-```
-Start the development!
 
 ### Create an instance of Meli class
 Simple like this
@@ -121,6 +113,10 @@ response = meli.delete("/questions/123", params)
 ## Examples
 
 Don't forget to check out our examples codes in the folder [examples](https://github.com/mercadolibre/ruby-sdk/tree/master/examples)
+
+[GET simple example console program](https://github.com/AlfredoBejarano/MercadoLibre-Ruby-SDK-Example)
+
+[Ruby on Rails GET example](https://github.com/AlfredoBejarano/MercadoLibre-Ruby-SDK-Example-Rails-Edition)
 
 ## Community
 

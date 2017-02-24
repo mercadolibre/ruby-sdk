@@ -1,0 +1,23 @@
+Lint/UselessAssignment:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Lint/Void:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 130
+
+Style/GuardClause:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Max: 5

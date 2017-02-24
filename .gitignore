@@ -1,3 +1,6 @@
+# Ignore Mac OS and Windows files
+*/thumbs.db
+*/.DS_Store
 /.bundle/
 /.yardoc
 /Gemfile.lock
@@ -7,3 +10,4 @@
 /pkg/
 /spec/reports/
 /tmp/
+*.gem
