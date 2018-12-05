@@ -148,14 +148,10 @@ private
     end
 
     def make_path(path, params = {})
-        # Making Path and add a leading / if not exist
-        unless path =~ /^http/
-            path = "/#{path}" unless path =~ /^\//
-            path = "#{API_ROOT_URL}#{path}"
-        end
+        path = "/#{path}" unless path =~ /^\//
+        path = "#{API_ROOT_URL}#{path}"
         path = "#{path}?#{to_url_params(params)}" if params.keys.size > 0
         uri = URI.parse path
     end
-
-
+      
 end  #class
