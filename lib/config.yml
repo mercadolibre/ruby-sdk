@@ -1,5 +1,5 @@
 config:
-    sdk_version: MELI-RUBY-SDK-1.0.1
+    sdk_version: MELI-RUBY-SDK-2.0.0
     api_root_url: https://api.mercadolibre.com
     auth_url: https://auth.mercadolivre.com.br/authorization # # Don't forget to set the URL of your country.
     oauth_url: /oauth/token
