@@ -12,7 +12,7 @@ OpenAPI Generator version: 4.3.1
 
 require 'cgi'
 
-module meli
+module Meli
   class OAuth20Api
     attr_accessor :api_client
 
@@ -68,6 +68,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -106,10 +108,10 @@ module meli
     # @option opts [String] :redirect_uri 
     # @option opts [String] :code 
     # @option opts [String] :refresh_token 
-    # @return [nil]
+    # @return [AnyType]
     def get_token(opts = {})
-      get_token_with_http_info(opts)
-      nil
+      data, _status_code, _headers = get_token_with_http_info(opts)
+      data
     end
 
     # Request Access Token
@@ -121,7 +123,7 @@ module meli
     # @option opts [String] :redirect_uri 
     # @option opts [String] :code 
     # @option opts [String] :refresh_token 
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def get_token_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OAuth20Api.get_token ...'
@@ -134,6 +136,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/x-www-form-urlencoded'])
 
@@ -150,7 +154,7 @@ module meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

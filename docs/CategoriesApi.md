@@ -1,4 +1,4 @@
-# meli::CategoriesApi
+# Meli::CategoriesApi
 
 All URIs are relative to *https://api.mercadolibre.com*
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## categories_category_id_get
 
-> categories_category_id_get(category_id)
+> AnyType categories_category_id_get(category_id)
 
 Return by category.
 
@@ -22,13 +22,14 @@ Return by category.
 # load the gem
 require 'meli'
 
-api_instance = meli::CategoriesApi.new
+api_instance = Meli::CategoriesApi.new
 category_id = 'category_id_example' # String | 
 
 begin
   #Return by category.
-  api_instance.categories_category_id_get(category_id)
-rescue meli::ApiError => e
+  result = api_instance.categories_category_id_get(category_id)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling CategoriesApi->categories_category_id_get: #{e}"
 end
 ```
@@ -42,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -51,12 +52,12 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## sites_site_id_categories_get
 
-> sites_site_id_categories_get(site_id)
+> AnyType sites_site_id_categories_get(site_id)
 
 Return a categories by site.
 
@@ -66,13 +67,14 @@ Return a categories by site.
 # load the gem
 require 'meli'
 
-api_instance = meli::CategoriesApi.new
+api_instance = Meli::CategoriesApi.new
 site_id = 'site_id_example' # String | 
 
 begin
   #Return a categories by site.
-  api_instance.sites_site_id_categories_get(site_id)
-rescue meli::ApiError => e
+  result = api_instance.sites_site_id_categories_get(site_id)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling CategoriesApi->sites_site_id_categories_get: #{e}"
 end
 ```
@@ -86,7 +88,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -95,12 +97,12 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## sites_site_id_domain_discovery_search_get
 
-> sites_site_id_domain_discovery_search_get(site_id, q, limit)
+> AnyType sites_site_id_domain_discovery_search_get(site_id, q, limit)
 
 Predictor
 
@@ -110,15 +112,16 @@ Predictor
 # load the gem
 require 'meli'
 
-api_instance = meli::CategoriesApi.new
+api_instance = Meli::CategoriesApi.new
 site_id = 'site_id_example' # String | 
 q = 'q_example' # String | 
 limit = 'limit_example' # String | 
 
 begin
   #Predictor
-  api_instance.sites_site_id_domain_discovery_search_get(site_id, q, limit)
-rescue meli::ApiError => e
+  result = api_instance.sites_site_id_domain_discovery_search_get(site_id, q, limit)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling CategoriesApi->sites_site_id_domain_discovery_search_get: #{e}"
 end
 ```
@@ -134,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -143,5 +146,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 

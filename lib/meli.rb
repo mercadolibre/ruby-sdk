@@ -33,10 +33,10 @@ require 'meli/api/items_health_api'
 require 'meli/api/o_auth20_api'
 require 'meli/api/rest_client_api'
 
-module meli
+module Meli
   class << self
     # Customize default settings for the SDK using block.
-    #   meli.configure do |config|
+    #   Meli.configure do |config|
     #     config.username = "xxx"
     #     config.password = "xxx"
     #   end

@@ -1,4 +1,4 @@
-# meli::AttributesValueStruct
+# Meli::AttributesValueStruct
 
 ## Properties
 
@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'meli'
+require 'Meli'
 
-instance = meli::AttributesValueStruct.new(number: 8,
+instance = Meli::AttributesValueStruct.new(number: 8,
                                  unit: GB)
 ```
 

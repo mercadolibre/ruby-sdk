@@ -1,4 +1,4 @@
-# meli::AttributesValues
+# Meli::AttributesValues
 
 ## Properties
 
@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'meli'
+require 'Meli'
 
-instance = meli::AttributesValues.new(id: null,
+instance = Meli::AttributesValues.new(id: null,
                                  name: 8 GB,
                                  struct: null)
 ```

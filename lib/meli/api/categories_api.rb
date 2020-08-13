@@ -12,7 +12,7 @@ OpenAPI Generator version: 4.3.1
 
 require 'cgi'
 
-module meli
+module Meli
   class CategoriesApi
     attr_accessor :api_client
 
@@ -22,16 +22,16 @@ module meli
     # Return by category.
     # @param category_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def categories_category_id_get(category_id, opts = {})
-      categories_category_id_get_with_http_info(category_id, opts)
-      nil
+      data, _status_code, _headers = categories_category_id_get_with_http_info(category_id, opts)
+      data
     end
 
     # Return by category.
     # @param category_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def categories_category_id_get_with_http_info(category_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CategoriesApi.categories_category_id_get ...'
@@ -40,10 +40,6 @@ module meli
       if @api_client.config.client_side_validation && category_id.nil?
         fail ArgumentError, "Missing the required parameter 'category_id' when calling CategoriesApi.categories_category_id_get"
       end
-      if @api_client.config.client_side_validation && category_id < 1
-        fail ArgumentError, 'invalid value for "category_id" when calling CategoriesApi.categories_category_id_get, must be greater than or equal to 1.'
-      end
-
       # resource path
       local_var_path = '/categories/{category_id}'.sub('{' + 'category_id' + '}', CGI.escape(category_id.to_s))
 
@@ -52,6 +48,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -60,7 +58,7 @@ module meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -84,16 +82,16 @@ module meli
     # Return a categories by site.
     # @param site_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def sites_site_id_categories_get(site_id, opts = {})
-      sites_site_id_categories_get_with_http_info(site_id, opts)
-      nil
+      data, _status_code, _headers = sites_site_id_categories_get_with_http_info(site_id, opts)
+      data
     end
 
     # Return a categories by site.
     # @param site_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def sites_site_id_categories_get_with_http_info(site_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CategoriesApi.sites_site_id_categories_get ...'
@@ -102,10 +100,6 @@ module meli
       if @api_client.config.client_side_validation && site_id.nil?
         fail ArgumentError, "Missing the required parameter 'site_id' when calling CategoriesApi.sites_site_id_categories_get"
       end
-      if @api_client.config.client_side_validation && site_id < 1
-        fail ArgumentError, 'invalid value for "site_id" when calling CategoriesApi.sites_site_id_categories_get, must be greater than or equal to 1.'
-      end
-
       # resource path
       local_var_path = '/sites/{site_id}/categories'.sub('{' + 'site_id' + '}', CGI.escape(site_id.to_s))
 
@@ -114,6 +108,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -122,7 +118,7 @@ module meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -148,10 +144,10 @@ module meli
     # @param q [String] 
     # @param limit [String] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def sites_site_id_domain_discovery_search_get(site_id, q, limit, opts = {})
-      sites_site_id_domain_discovery_search_get_with_http_info(site_id, q, limit, opts)
-      nil
+      data, _status_code, _headers = sites_site_id_domain_discovery_search_get_with_http_info(site_id, q, limit, opts)
+      data
     end
 
     # Predictor
@@ -159,7 +155,7 @@ module meli
     # @param q [String] 
     # @param limit [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def sites_site_id_domain_discovery_search_get_with_http_info(site_id, q, limit, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CategoriesApi.sites_site_id_domain_discovery_search_get ...'
@@ -168,26 +164,14 @@ module meli
       if @api_client.config.client_side_validation && site_id.nil?
         fail ArgumentError, "Missing the required parameter 'site_id' when calling CategoriesApi.sites_site_id_domain_discovery_search_get"
       end
-      if @api_client.config.client_side_validation && site_id < 1
-        fail ArgumentError, 'invalid value for "site_id" when calling CategoriesApi.sites_site_id_domain_discovery_search_get, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'q' is set
       if @api_client.config.client_side_validation && q.nil?
         fail ArgumentError, "Missing the required parameter 'q' when calling CategoriesApi.sites_site_id_domain_discovery_search_get"
       end
-      if @api_client.config.client_side_validation && q < 1
-        fail ArgumentError, 'invalid value for "q" when calling CategoriesApi.sites_site_id_domain_discovery_search_get, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'limit' is set
       if @api_client.config.client_side_validation && limit.nil?
         fail ArgumentError, "Missing the required parameter 'limit' when calling CategoriesApi.sites_site_id_domain_discovery_search_get"
       end
-      if @api_client.config.client_side_validation && limit < 1
-        fail ArgumentError, 'invalid value for "limit" when calling CategoriesApi.sites_site_id_domain_discovery_search_get, must be greater than or equal to 1.'
-      end
-
       # resource path
       local_var_path = '/sites/{site_id}/domain_discovery/search'.sub('{' + 'site_id' + '}', CGI.escape(site_id.to_s))
 
@@ -198,6 +182,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -206,7 +192,7 @@ module meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

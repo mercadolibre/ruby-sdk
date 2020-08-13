@@ -1,4 +1,4 @@
-# meli::Item
+# Meli::Item
 
 ## Properties
 
@@ -21,9 +21,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'meli'
+require 'Meli'
 
-instance = meli::Item.new(title: Item de test - No Ofertar,
+instance = Meli::Item.new(title: Item de test - No Ofertar,
                                  category_id: MLA5991,
                                  price: 350,
                                  currency_id: ARS,

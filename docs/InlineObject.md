@@ -1,4 +1,4 @@
-# meli::InlineObject
+# Meli::InlineObject
 
 ## Properties
 
@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'meli'
+require 'Meli'
 
-instance = meli::InlineObject.new(grant_type: authorization_code,
+instance = Meli::InlineObject.new(grant_type: authorization_code,
                                  client_id: null,
                                  client_secret: null,
                                  redirect_uri: null,

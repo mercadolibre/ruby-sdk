@@ -69,7 +69,9 @@ end
 
 ##### The URIs are relative to https://api.mercadolibre.com
 
-##### The Authorization URL: https://auth.mercadolibre.com.ar/authorization
+##### The Authorization URLs:
+###### Remember set your correct country ID
+###### https://auth.mercadolibre.{country_domain}
 
 #####  All docs for the library are located [here](https://github.com/mercadolibre/ruby-sdk/tree/master/docs)
 

@@ -1,4 +1,4 @@
-# meli::VariationsAttributeCombinations
+# Meli::VariationsAttributeCombinations
 
 ## Properties
 
@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'meli'
+require 'Meli'
 
-instance = meli::VariationsAttributeCombinations.new(name: Color,
+instance = Meli::VariationsAttributeCombinations.new(name: Color,
                                  value_id: 283165,
                                  value_name: Gris)
 ```

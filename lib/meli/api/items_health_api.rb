@@ -12,7 +12,7 @@ OpenAPI Generator version: 4.3.1
 
 require 'cgi'
 
-module meli
+module Meli
   class ItemsHealthApi
     attr_accessor :api_client
 
@@ -23,17 +23,17 @@ module meli
     # @param id [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def items_id_health_actions_get(id, access_token, opts = {})
-      items_id_health_actions_get_with_http_info(id, access_token, opts)
-      nil
+      data, _status_code, _headers = items_id_health_actions_get_with_http_info(id, access_token, opts)
+      data
     end
 
     # Return item health actions by id.
     # @param id [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def items_id_health_actions_get_with_http_info(id, access_token, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ItemsHealthApi.items_id_health_actions_get ...'
@@ -42,18 +42,10 @@ module meli
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling ItemsHealthApi.items_id_health_actions_get"
       end
-      if @api_client.config.client_side_validation && id < 1
-        fail ArgumentError, 'invalid value for "id" when calling ItemsHealthApi.items_id_health_actions_get, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'access_token' is set
       if @api_client.config.client_side_validation && access_token.nil?
         fail ArgumentError, "Missing the required parameter 'access_token' when calling ItemsHealthApi.items_id_health_actions_get"
       end
-      if @api_client.config.client_side_validation && access_token < 1
-        fail ArgumentError, 'invalid value for "access_token" when calling ItemsHealthApi.items_id_health_actions_get, must be greater than or equal to 1.'
-      end
-
       # resource path
       local_var_path = '/items/{id}/health/actions'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
@@ -63,6 +55,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -71,7 +65,7 @@ module meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -96,17 +90,17 @@ module meli
     # @param id [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def items_id_health_get(id, access_token, opts = {})
-      items_id_health_get_with_http_info(id, access_token, opts)
-      nil
+      data, _status_code, _headers = items_id_health_get_with_http_info(id, access_token, opts)
+      data
     end
 
     # Return health by id.
     # @param id [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def items_id_health_get_with_http_info(id, access_token, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ItemsHealthApi.items_id_health_get ...'
@@ -115,18 +109,10 @@ module meli
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling ItemsHealthApi.items_id_health_get"
       end
-      if @api_client.config.client_side_validation && id < 1
-        fail ArgumentError, 'invalid value for "id" when calling ItemsHealthApi.items_id_health_get, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'access_token' is set
       if @api_client.config.client_side_validation && access_token.nil?
         fail ArgumentError, "Missing the required parameter 'access_token' when calling ItemsHealthApi.items_id_health_get"
       end
-      if @api_client.config.client_side_validation && access_token < 1
-        fail ArgumentError, 'invalid value for "access_token" when calling ItemsHealthApi.items_id_health_get, must be greater than or equal to 1.'
-      end
-
       # resource path
       local_var_path = '/items/{id}/health'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
@@ -136,6 +122,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -144,7 +132,7 @@ module meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -168,16 +156,16 @@ module meli
     # Return health levels.
     # @param site_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def sites_site_id_health_levels_get(site_id, opts = {})
-      sites_site_id_health_levels_get_with_http_info(site_id, opts)
-      nil
+      data, _status_code, _headers = sites_site_id_health_levels_get_with_http_info(site_id, opts)
+      data
     end
 
     # Return health levels.
     # @param site_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def sites_site_id_health_levels_get_with_http_info(site_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ItemsHealthApi.sites_site_id_health_levels_get ...'
@@ -186,10 +174,6 @@ module meli
       if @api_client.config.client_side_validation && site_id.nil?
         fail ArgumentError, "Missing the required parameter 'site_id' when calling ItemsHealthApi.sites_site_id_health_levels_get"
       end
-      if @api_client.config.client_side_validation && site_id < 1
-        fail ArgumentError, 'invalid value for "site_id" when calling ItemsHealthApi.sites_site_id_health_levels_get, must be greater than or equal to 1.'
-      end
-
       # resource path
       local_var_path = '/sites/{site_id}/health_levels'.sub('{' + 'site_id' + '}', CGI.escape(site_id.to_s))
 
@@ -198,6 +182,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -206,7 +192,7 @@ module meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

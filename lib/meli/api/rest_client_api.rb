@@ -12,48 +12,40 @@ OpenAPI Generator version: 4.3.1
 
 require 'cgi'
 
-module meli
+module Meli
   class RestClientApi
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Resource path GET
+    # Resource path DELETE
     # @param resource [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def resource_get(resource, access_token, opts = {})
-      resource_get_with_http_info(resource, access_token, opts)
-      nil
+    # @return [AnyType]
+    def resource_delete(resource, access_token, opts = {})
+      data, _status_code, _headers = resource_delete_with_http_info(resource, access_token, opts)
+      data
     end
 
-    # Resource path GET
+    # Resource path DELETE
     # @param resource [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def resource_get_with_http_info(resource, access_token, opts = {})
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    def resource_delete_with_http_info(resource, access_token, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RestClientApi.resource_get ...'
+        @api_client.config.logger.debug 'Calling API: RestClientApi.resource_delete ...'
       end
       # verify the required parameter 'resource' is set
       if @api_client.config.client_side_validation && resource.nil?
-        fail ArgumentError, "Missing the required parameter 'resource' when calling RestClientApi.resource_get"
+        fail ArgumentError, "Missing the required parameter 'resource' when calling RestClientApi.resource_delete"
       end
-      if @api_client.config.client_side_validation && resource < 1
-        fail ArgumentError, 'invalid value for "resource" when calling RestClientApi.resource_get, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'access_token' is set
       if @api_client.config.client_side_validation && access_token.nil?
-        fail ArgumentError, "Missing the required parameter 'access_token' when calling RestClientApi.resource_get"
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling RestClientApi.resource_delete"
       end
-      if @api_client.config.client_side_validation && access_token < 1
-        fail ArgumentError, 'invalid value for "access_token" when calling RestClientApi.resource_get, must be greater than or equal to 1.'
-      end
-
       # resource path
       local_var_path = '/{resource}'.sub('{' + 'resource' + '}', CGI.escape(resource.to_s))
 
@@ -63,6 +55,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -71,7 +65,74 @@ module meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RestClientApi#resource_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Resource path GET
+    # @param resource [String] 
+    # @param access_token [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [AnyType]
+    def resource_get(resource, access_token, opts = {})
+      data, _status_code, _headers = resource_get_with_http_info(resource, access_token, opts)
+      data
+    end
+
+    # Resource path GET
+    # @param resource [String] 
+    # @param access_token [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    def resource_get_with_http_info(resource, access_token, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RestClientApi.resource_get ...'
+      end
+      # verify the required parameter 'resource' is set
+      if @api_client.config.client_side_validation && resource.nil?
+        fail ArgumentError, "Missing the required parameter 'resource' when calling RestClientApi.resource_get"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling RestClientApi.resource_get"
+      end
+      # resource path
+      local_var_path = '/{resource}'.sub('{' + 'resource' + '}', CGI.escape(resource.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'access_token'] = access_token
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -97,10 +158,10 @@ module meli
     # @param access_token [String] 
     # @param body [Object] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def resource_post(resource, access_token, body, opts = {})
-      resource_post_with_http_info(resource, access_token, body, opts)
-      nil
+      data, _status_code, _headers = resource_post_with_http_info(resource, access_token, body, opts)
+      data
     end
 
     # Resourse path POST
@@ -108,7 +169,7 @@ module meli
     # @param access_token [String] 
     # @param body [Object] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def resource_post_with_http_info(resource, access_token, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RestClientApi.resource_post ...'
@@ -117,18 +178,10 @@ module meli
       if @api_client.config.client_side_validation && resource.nil?
         fail ArgumentError, "Missing the required parameter 'resource' when calling RestClientApi.resource_post"
       end
-      if @api_client.config.client_side_validation && resource < 1
-        fail ArgumentError, 'invalid value for "resource" when calling RestClientApi.resource_post, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'access_token' is set
       if @api_client.config.client_side_validation && access_token.nil?
         fail ArgumentError, "Missing the required parameter 'access_token' when calling RestClientApi.resource_post"
       end
-      if @api_client.config.client_side_validation && access_token < 1
-        fail ArgumentError, 'invalid value for "access_token" when calling RestClientApi.resource_post, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'body' is set
       if @api_client.config.client_side_validation && body.nil?
         fail ArgumentError, "Missing the required parameter 'body' when calling RestClientApi.resource_post"
@@ -142,6 +195,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -152,7 +207,7 @@ module meli
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -178,10 +233,10 @@ module meli
     # @param access_token [String] 
     # @param body [Object] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def resource_put(resource, access_token, body, opts = {})
-      resource_put_with_http_info(resource, access_token, body, opts)
-      nil
+      data, _status_code, _headers = resource_put_with_http_info(resource, access_token, body, opts)
+      data
     end
 
     # Resourse path PUT
@@ -189,7 +244,7 @@ module meli
     # @param access_token [String] 
     # @param body [Object] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def resource_put_with_http_info(resource, access_token, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RestClientApi.resource_put ...'
@@ -198,18 +253,10 @@ module meli
       if @api_client.config.client_side_validation && resource.nil?
         fail ArgumentError, "Missing the required parameter 'resource' when calling RestClientApi.resource_put"
       end
-      if @api_client.config.client_side_validation && resource < 1
-        fail ArgumentError, 'invalid value for "resource" when calling RestClientApi.resource_put, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'access_token' is set
       if @api_client.config.client_side_validation && access_token.nil?
         fail ArgumentError, "Missing the required parameter 'access_token' when calling RestClientApi.resource_put"
       end
-      if @api_client.config.client_side_validation && access_token < 1
-        fail ArgumentError, 'invalid value for "access_token" when calling RestClientApi.resource_put, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'body' is set
       if @api_client.config.client_side_validation && body.nil?
         fail ArgumentError, "Missing the required parameter 'body' when calling RestClientApi.resource_put"
@@ -223,6 +270,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -233,7 +282,7 @@ module meli
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

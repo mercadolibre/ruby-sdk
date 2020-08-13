@@ -16,7 +16,7 @@ require 'logger'
 require 'tempfile'
 require 'typhoeus'
 
-module meli
+module Meli
   class ApiClient
     # The Configuration object holding settings to be used in the API client.
     attr_accessor :config
@@ -236,7 +236,7 @@ module meli
         end
       else
         # models, e.g. Pet
-        meli.const_get(return_type).build_from_hash(data)
+        Meli.const_get(return_type).build_from_hash(data)
       end
     end
 

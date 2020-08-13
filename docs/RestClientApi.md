@@ -1,18 +1,66 @@
-# meli::RestClientApi
+# Meli::RestClientApi
 
 All URIs are relative to *https://api.mercadolibre.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**resource_delete**](RestClientApi.md#resource_delete) | **DELETE** /{resource} | Resource path DELETE
 [**resource_get**](RestClientApi.md#resource_get) | **GET** /{resource} | Resource path GET
 [**resource_post**](RestClientApi.md#resource_post) | **POST** /{resource} | Resourse path POST
 [**resource_put**](RestClientApi.md#resource_put) | **PUT** /{resource} | Resourse path PUT
 
 
 
+## resource_delete
+
+> AnyType resource_delete(resource, access_token)
+
+Resource path DELETE
+
+### Example
+
+```ruby
+# load the gem
+require 'meli'
+
+api_instance = Meli::RestClientApi.new
+resource = 'resource_example' # String | 
+access_token = 'access_token_example' # String | 
+
+begin
+  #Resource path DELETE
+  result = api_instance.resource_delete(resource, access_token)
+  p result
+rescue Meli::ApiError => e
+  puts "Exception when calling RestClientApi->resource_delete: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource** | **String**|  | 
+ **access_token** | **String**|  | 
+
+### Return type
+
+[**AnyType**](AnyType.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## resource_get
 
-> resource_get(resource, access_token)
+> AnyType resource_get(resource, access_token)
 
 Resource path GET
 
@@ -22,14 +70,15 @@ Resource path GET
 # load the gem
 require 'meli'
 
-api_instance = meli::RestClientApi.new
+api_instance = Meli::RestClientApi.new
 resource = 'resource_example' # String | 
 access_token = 'access_token_example' # String | 
 
 begin
   #Resource path GET
-  api_instance.resource_get(resource, access_token)
-rescue meli::ApiError => e
+  result = api_instance.resource_get(resource, access_token)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling RestClientApi->resource_get: #{e}"
 end
 ```
@@ -44,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -53,12 +102,12 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## resource_post
 
-> resource_post(resource, access_token, body)
+> AnyType resource_post(resource, access_token, body)
 
 Resourse path POST
 
@@ -68,15 +117,16 @@ Resourse path POST
 # load the gem
 require 'meli'
 
-api_instance = meli::RestClientApi.new
+api_instance = Meli::RestClientApi.new
 resource = 'resource_example' # String | 
 access_token = 'access_token_example' # String | 
 body = nil # Object | 
 
 begin
   #Resourse path POST
-  api_instance.resource_post(resource, access_token, body)
-rescue meli::ApiError => e
+  result = api_instance.resource_post(resource, access_token, body)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling RestClientApi->resource_post: #{e}"
 end
 ```
@@ -92,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -101,12 +151,12 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## resource_put
 
-> resource_put(resource, access_token, body)
+> AnyType resource_put(resource, access_token, body)
 
 Resourse path PUT
 
@@ -116,15 +166,16 @@ Resourse path PUT
 # load the gem
 require 'meli'
 
-api_instance = meli::RestClientApi.new
+api_instance = Meli::RestClientApi.new
 resource = 'resource_example' # String | 
 access_token = 'access_token_example' # String | 
 body = nil # Object | 
 
 begin
   #Resourse path PUT
-  api_instance.resource_put(resource, access_token, body)
-rescue meli::ApiError => e
+  result = api_instance.resource_put(resource, access_token, body)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling RestClientApi->resource_put: #{e}"
 end
 ```
@@ -140,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -149,5 +200,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 

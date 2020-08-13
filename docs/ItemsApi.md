@@ -1,4 +1,4 @@
-# meli::ItemsApi
+# Meli::ItemsApi
 
 All URIs are relative to *https://api.mercadolibre.com*
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## items_id_get
 
-> items_id_get(id)
+> AnyType items_id_get(id)
 
 Return a Item.
 
@@ -22,13 +22,14 @@ Return a Item.
 # load the gem
 require 'meli'
 
-api_instance = meli::ItemsApi.new
+api_instance = Meli::ItemsApi.new
 id = 'id_example' # String | 
 
 begin
   #Return a Item.
-  api_instance.items_id_get(id)
-rescue meli::ApiError => e
+  result = api_instance.items_id_get(id)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling ItemsApi->items_id_get: #{e}"
 end
 ```
@@ -42,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -51,12 +52,12 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## items_id_put
 
-> items_id_put(id, access_token, item)
+> AnyType items_id_put(id, access_token, item)
 
 Update a Item.
 
@@ -66,15 +67,16 @@ Update a Item.
 # load the gem
 require 'meli'
 
-api_instance = meli::ItemsApi.new
+api_instance = Meli::ItemsApi.new
 id = 'id_example' # String | 
 access_token = 'access_token_example' # String | 
-item = meli::Item.new # Item | 
+item = Meli::Item.new # Item | 
 
 begin
   #Update a Item.
-  api_instance.items_id_put(id, access_token, item)
-rescue meli::ApiError => e
+  result = api_instance.items_id_put(id, access_token, item)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling ItemsApi->items_id_put: #{e}"
 end
 ```
@@ -90,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -99,12 +101,12 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## items_post
 
-> items_post(access_token, item)
+> AnyType items_post(access_token, item)
 
 Create a Item.
 
@@ -114,14 +116,15 @@ Create a Item.
 # load the gem
 require 'meli'
 
-api_instance = meli::ItemsApi.new
+api_instance = Meli::ItemsApi.new
 access_token = 'access_token_example' # String | 
-item = meli::Item.new # Item | 
+item = Meli::Item.new # Item | 
 
 begin
   #Create a Item.
-  api_instance.items_post(access_token, item)
-rescue meli::ApiError => e
+  result = api_instance.items_post(access_token, item)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling ItemsApi->items_post: #{e}"
 end
 ```
@@ -136,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -145,5 +148,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 

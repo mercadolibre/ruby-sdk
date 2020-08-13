@@ -1,4 +1,4 @@
-# meli::Attributes
+# Meli::Attributes
 
 ## Properties
 
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'meli'
+require 'Meli'
 
-instance = meli::Attributes.new(id: DATA_STORAGE_CAPACITY,
+instance = Meli::Attributes.new(id: DATA_STORAGE_CAPACITY,
                                  name: Capacidad de almacenamiento de datos,
                                  value_id: null,
                                  value_name: 8 GB,

@@ -1,4 +1,4 @@
-# meli::ItemPictures
+# Meli::ItemPictures
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'meli'
+require 'Meli'
 
-instance = meli::ItemPictures.new(source: https://http2.mlstatic.com/storage/developers-site-cms-admin/openapi/319968615067-mp3.jpg)
+instance = Meli::ItemPictures.new(source: https://http2.mlstatic.com/storage/developers-site-cms-admin/openapi/319968615067-mp3.jpg)
 ```
 
 

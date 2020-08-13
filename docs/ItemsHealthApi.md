@@ -1,4 +1,4 @@
-# meli::ItemsHealthApi
+# Meli::ItemsHealthApi
 
 All URIs are relative to *https://api.mercadolibre.com*
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## items_id_health_actions_get
 
-> items_id_health_actions_get(id, access_token)
+> AnyType items_id_health_actions_get(id, access_token)
 
 Return item health actions by id.
 
@@ -22,14 +22,15 @@ Return item health actions by id.
 # load the gem
 require 'meli'
 
-api_instance = meli::ItemsHealthApi.new
+api_instance = Meli::ItemsHealthApi.new
 id = 'id_example' # String | 
 access_token = 'access_token_example' # String | 
 
 begin
   #Return item health actions by id.
-  api_instance.items_id_health_actions_get(id, access_token)
-rescue meli::ApiError => e
+  result = api_instance.items_id_health_actions_get(id, access_token)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling ItemsHealthApi->items_id_health_actions_get: #{e}"
 end
 ```
@@ -44,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -53,12 +54,12 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## items_id_health_get
 
-> items_id_health_get(id, access_token)
+> AnyType items_id_health_get(id, access_token)
 
 Return health by id.
 
@@ -68,14 +69,15 @@ Return health by id.
 # load the gem
 require 'meli'
 
-api_instance = meli::ItemsHealthApi.new
+api_instance = Meli::ItemsHealthApi.new
 id = 'id_example' # String | 
 access_token = 'access_token_example' # String | 
 
 begin
   #Return health by id.
-  api_instance.items_id_health_get(id, access_token)
-rescue meli::ApiError => e
+  result = api_instance.items_id_health_get(id, access_token)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling ItemsHealthApi->items_id_health_get: #{e}"
 end
 ```
@@ -90,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -99,12 +101,12 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## sites_site_id_health_levels_get
 
-> sites_site_id_health_levels_get(site_id)
+> AnyType sites_site_id_health_levels_get(site_id)
 
 Return health levels.
 
@@ -114,13 +116,14 @@ Return health levels.
 # load the gem
 require 'meli'
 
-api_instance = meli::ItemsHealthApi.new
+api_instance = Meli::ItemsHealthApi.new
 site_id = 'site_id_example' # String | 
 
 begin
   #Return health levels.
-  api_instance.sites_site_id_health_levels_get(site_id)
-rescue meli::ApiError => e
+  result = api_instance.sites_site_id_health_levels_get(site_id)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling ItemsHealthApi->sites_site_id_health_levels_get: #{e}"
 end
 ```
@@ -134,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -143,5 +146,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 

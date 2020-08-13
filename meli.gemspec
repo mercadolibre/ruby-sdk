@@ -17,7 +17,7 @@ require "meli/version"
 
 Gem::Specification.new do |s|
   s.name        = "meli"
-  s.version     = meli::VERSION
+  s.version     = Meli::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["OpenAPI-Generator"]
   s.email       = [""]

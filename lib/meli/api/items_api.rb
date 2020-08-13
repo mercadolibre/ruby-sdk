@@ -12,7 +12,7 @@ OpenAPI Generator version: 4.3.1
 
 require 'cgi'
 
-module meli
+module Meli
   class ItemsApi
     attr_accessor :api_client
 
@@ -22,16 +22,16 @@ module meli
     # Return a Item.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def items_id_get(id, opts = {})
-      items_id_get_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = items_id_get_with_http_info(id, opts)
+      data
     end
 
     # Return a Item.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def items_id_get_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ItemsApi.items_id_get ...'
@@ -40,10 +40,6 @@ module meli
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling ItemsApi.items_id_get"
       end
-      if @api_client.config.client_side_validation && id < 1
-        fail ArgumentError, 'invalid value for "id" when calling ItemsApi.items_id_get, must be greater than or equal to 1.'
-      end
-
       # resource path
       local_var_path = '/items/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
@@ -52,6 +48,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -60,7 +58,7 @@ module meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -86,10 +84,10 @@ module meli
     # @param access_token [String] 
     # @param item [Item] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def items_id_put(id, access_token, item, opts = {})
-      items_id_put_with_http_info(id, access_token, item, opts)
-      nil
+      data, _status_code, _headers = items_id_put_with_http_info(id, access_token, item, opts)
+      data
     end
 
     # Update a Item.
@@ -97,7 +95,7 @@ module meli
     # @param access_token [String] 
     # @param item [Item] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def items_id_put_with_http_info(id, access_token, item, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ItemsApi.items_id_put ...'
@@ -106,18 +104,10 @@ module meli
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling ItemsApi.items_id_put"
       end
-      if @api_client.config.client_side_validation && id < 1
-        fail ArgumentError, 'invalid value for "id" when calling ItemsApi.items_id_put, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'access_token' is set
       if @api_client.config.client_side_validation && access_token.nil?
         fail ArgumentError, "Missing the required parameter 'access_token' when calling ItemsApi.items_id_put"
       end
-      if @api_client.config.client_side_validation && access_token < 1
-        fail ArgumentError, 'invalid value for "access_token" when calling ItemsApi.items_id_put, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'item' is set
       if @api_client.config.client_side_validation && item.nil?
         fail ArgumentError, "Missing the required parameter 'item' when calling ItemsApi.items_id_put"
@@ -131,6 +121,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -141,7 +133,7 @@ module meli
       post_body = opts[:body] || @api_client.object_to_http_body(item) 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -166,17 +158,17 @@ module meli
     # @param access_token [String] 
     # @param item [Item] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [AnyType]
     def items_post(access_token, item, opts = {})
-      items_post_with_http_info(access_token, item, opts)
-      nil
+      data, _status_code, _headers = items_post_with_http_info(access_token, item, opts)
+      data
     end
 
     # Create a Item.
     # @param access_token [String] 
     # @param item [Item] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
     def items_post_with_http_info(access_token, item, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ItemsApi.items_post ...'
@@ -185,10 +177,6 @@ module meli
       if @api_client.config.client_side_validation && access_token.nil?
         fail ArgumentError, "Missing the required parameter 'access_token' when calling ItemsApi.items_post"
       end
-      if @api_client.config.client_side_validation && access_token < 1
-        fail ArgumentError, 'invalid value for "access_token" when calling ItemsApi.items_post, must be greater than or equal to 1.'
-      end
-
       # verify the required parameter 'item' is set
       if @api_client.config.client_side_validation && item.nil?
         fail ArgumentError, "Missing the required parameter 'item' when calling ItemsApi.items_post"
@@ -202,6 +190,8 @@ module meli
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
@@ -212,7 +202,7 @@ module meli
       post_body = opts[:body] || @api_client.object_to_http_body(item) 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'AnyType' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

@@ -1,4 +1,4 @@
-# meli::OAuth20Api
+# Meli::OAuth20Api
 
 All URIs are relative to *https://api.mercadolibre.com*
 
@@ -21,7 +21,7 @@ Authentication Endpoint
 # load the gem
 require 'meli'
 
-api_instance = meli::OAuth20Api.new
+api_instance = Meli::OAuth20Api.new
 response_type = 'code' # String | 
 client_id = 'client_id_example' # String | 
 redirect_uri = 'redirect_uri_example' # String | 
@@ -29,7 +29,7 @@ redirect_uri = 'redirect_uri_example' # String |
 begin
   #Authentication Endpoint
   api_instance.auth(response_type, client_id, redirect_uri)
-rescue meli::ApiError => e
+rescue Meli::ApiError => e
   puts "Exception when calling OAuth20Api->auth: #{e}"
 end
 ```
@@ -54,12 +54,12 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## get_token
 
-> get_token(opts)
+> AnyType get_token(opts)
 
 Request Access Token
 
@@ -71,7 +71,7 @@ Partner makes a request to the token endpoint by adding the following parameters
 # load the gem
 require 'meli'
 
-api_instance = meli::OAuth20Api.new
+api_instance = Meli::OAuth20Api.new
 opts = {
   grant_type: 'grant_type_example', # String | 
   client_id: 'client_id_example', # String | 
@@ -83,8 +83,9 @@ opts = {
 
 begin
   #Request Access Token
-  api_instance.get_token(opts)
-rescue meli::ApiError => e
+  result = api_instance.get_token(opts)
+  p result
+rescue Meli::ApiError => e
   puts "Exception when calling OAuth20Api->get_token: #{e}"
 end
 ```
@@ -103,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -112,5 +113,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/x-www-form-urlencoded
-- **Accept**: Not defined
+- **Accept**: application/json
 

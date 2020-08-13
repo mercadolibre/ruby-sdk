@@ -10,6 +10,6 @@ OpenAPI Generator version: 4.3.1
 
 =end
 
-module meli
+module Meli
   VERSION = '3.0.0'
 end

@@ -1,4 +1,4 @@
-# meli::Variations
+# Meli::Variations
 
 ## Properties
 
@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 ## Code Sample
 
 ```ruby
-require 'meli'
+require 'Meli'
 
-instance = meli::Variations.new(price: 350,
+instance = Meli::Variations.new(price: 350,
                                  attribute_combinations: null,
                                  available_quantity: 2,
                                  sold_quantity: 0,
