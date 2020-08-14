@@ -108,15 +108,16 @@ end
 require 'Meli'
 
 api_instance = Meli::RestClientApi.new
-resource = 'resource_example' # For example items
-access_token = 'access_token_example' # Your access token
+resource = 'resource_example' # String | 
+access_token = 'access_token_example' # String | 
+body = nil # Object | 
 
 begin
-  #Resource path DELETE
-  result = api_instance.resource_delete(resource, access_token)
+  #Resourse path POST
+  result = api_instance.resource_post(resource, access_token, body)
   p result
 rescue Meli::ApiError => e
-  puts "Exception when calling RestClientApi->resource_delete: #{e}"
+  puts "Exception when calling RestClientApi->resource_post: #{e}"
 end
 ```
 
