@@ -20,7 +20,7 @@ Return item health actions by id.
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::ItemsHealthApi.new
 id = 'id_example' # String | 
@@ -67,7 +67,7 @@ Return health by id.
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::ItemsHealthApi.new
 id = 'id_example' # String | 
@@ -114,7 +114,7 @@ Return health levels.
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::ItemsHealthApi.new
 site_id = 'site_id_example' # String | 

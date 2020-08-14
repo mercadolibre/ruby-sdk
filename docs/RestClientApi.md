@@ -21,7 +21,7 @@ Resource path DELETE
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::RestClientApi.new
 resource = 'resource_example' # String | 
@@ -68,7 +68,7 @@ Resource path GET
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::RestClientApi.new
 resource = 'resource_example' # String | 
@@ -115,7 +115,7 @@ Resourse path POST
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::RestClientApi.new
 resource = 'resource_example' # String | 
@@ -164,7 +164,7 @@ Resourse path PUT
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::RestClientApi.new
 resource = 'resource_example' # String | 

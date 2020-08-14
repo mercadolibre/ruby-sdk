@@ -13,10 +13,10 @@ OpenAPI Generator version: 4.3.1
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "meli/version"
+require "Meli/version"
 
 Gem::Specification.new do |s|
-  s.name        = "meli"
+  s.name        = "Meli"
   s.version     = Meli::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["OpenAPI-Generator"]

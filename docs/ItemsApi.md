@@ -20,7 +20,7 @@ Return a Item.
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::ItemsApi.new
 id = 'id_example' # String | 
@@ -65,7 +65,7 @@ Update a Item.
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::ItemsApi.new
 id = 'id_example' # String | 
@@ -114,7 +114,7 @@ Create a Item.
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::ItemsApi.new
 access_token = 'access_token_example' # String | 

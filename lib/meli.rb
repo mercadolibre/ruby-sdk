@@ -11,27 +11,27 @@ OpenAPI Generator version: 4.3.1
 =end
 
 # Common files
-require 'meli/api_client'
-require 'meli/api_error'
-require 'meli/version'
-require 'meli/configuration'
+require 'Meli/api_client'
+require 'Meli/api_error'
+require 'Meli/version'
+require 'Meli/configuration'
 
 # Models
-require 'meli/models/attributes'
-require 'meli/models/attributes_value_struct'
-require 'meli/models/attributes_values'
-require 'meli/models/inline_object'
-require 'meli/models/item'
-require 'meli/models/item_pictures'
-require 'meli/models/variations'
-require 'meli/models/variations_attribute_combinations'
+require 'Meli/models/attributes'
+require 'Meli/models/attributes_value_struct'
+require 'Meli/models/attributes_values'
+require 'Meli/models/inline_object'
+require 'Meli/models/item'
+require 'Meli/models/item_pictures'
+require 'Meli/models/variations'
+require 'Meli/models/variations_attribute_combinations'
 
 # APIs
-require 'meli/api/categories_api'
-require 'meli/api/items_api'
-require 'meli/api/items_health_api'
-require 'meli/api/o_auth20_api'
-require 'meli/api/rest_client_api'
+require 'Meli/api/categories_api'
+require 'Meli/api/items_api'
+require 'Meli/api/items_health_api'
+require 'Meli/api/o_auth20_api'
+require 'Meli/api/rest_client_api'
 
 module Meli
   class << self

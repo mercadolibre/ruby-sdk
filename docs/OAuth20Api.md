@@ -19,7 +19,7 @@ Authentication Endpoint
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::OAuth20Api.new
 response_type = 'code' # String | 
@@ -69,7 +69,7 @@ Partner makes a request to the token endpoint by adding the following parameters
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::OAuth20Api.new
 opts = {

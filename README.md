@@ -50,19 +50,26 @@ ruby -Ilib script.rb
 
 ## Usage
 ```ruby
-# Load the gem
-require 'meli'
+# load the gem
+require 'Meli'
 
-api_instance = meli::CategoriesApi.new
-category_id = 'category_id_example' # String | 
+api_instance = Meli::OAuth20Api.new
+opts = {
+  grant_type: 'grant_type_example', # String | 
+  client_id: 'client_id_example', # String | 
+  client_secret: 'client_secret_example', # String | 
+  redirect_uri: 'redirect_uri_example', # String | 
+  code: 'code_example', # String | 
+  refresh_token: 'refresh_token_example' # String | 
+}
 
 begin
-  #Return by category.
-  api_instance.categories_category_id_get(category_id)
-rescue meli::ApiError => e
-  puts "Exception when calling CategoriesApi->categories_category_id_get: #{e}"
+  #Request Access Token
+  result = api_instance.get_token(opts)
+  p result
+rescue Meli::ApiError => e
+  puts "Exception when calling OAuth20Api->get_token: #{e}"
 end
-
 ```
 
 ## Documentation & Important notes

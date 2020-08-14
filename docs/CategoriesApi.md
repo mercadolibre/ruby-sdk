@@ -20,7 +20,7 @@ Return by category.
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::CategoriesApi.new
 category_id = 'category_id_example' # String | 
@@ -65,7 +65,7 @@ Return a categories by site.
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::CategoriesApi.new
 site_id = 'site_id_example' # String | 
@@ -110,7 +110,7 @@ Predictor
 
 ```ruby
 # load the gem
-require 'meli'
+require 'Meli'
 
 api_instance = Meli::CategoriesApi.new
 site_id = 'site_id_example' # String | 
