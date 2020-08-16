@@ -36,7 +36,7 @@ describe 'CategoriesApi' do
   # Return by category.
   # @param category_id 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'categories_category_id_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -47,7 +47,7 @@ describe 'CategoriesApi' do
   # Return a categories by site.
   # @param site_id 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'sites_site_id_categories_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -60,7 +60,7 @@ describe 'CategoriesApi' do
   # @param q 
   # @param limit 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'sites_site_id_domain_discovery_search_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

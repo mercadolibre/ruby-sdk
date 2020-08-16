@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## items_id_get
 
-> AnyType items_id_get(id)
+> Object items_id_get(id)
 
 Return a Item.
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -57,7 +57,7 @@ No authorization required
 
 ## items_id_put
 
-> AnyType items_id_put(id, access_token, item)
+> Object items_id_put(id, access_token, item)
 
 Update a Item.
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -106,7 +106,7 @@ No authorization required
 
 ## items_post
 
-> AnyType items_post(access_token, item)
+> Object items_post(access_token, item)
 
 Create a Item.
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 

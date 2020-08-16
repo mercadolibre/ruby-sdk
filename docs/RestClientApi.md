@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## resource_delete
 
-> AnyType resource_delete(resource, access_token)
+> Object resource_delete(resource, access_token)
 
 Resource path DELETE
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ No authorization required
 
 ## resource_get
 
-> AnyType resource_get(resource, access_token)
+> Object resource_get(resource, access_token)
 
 Resource path GET
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -107,7 +107,7 @@ No authorization required
 
 ## resource_post
 
-> AnyType resource_post(resource, access_token, body)
+> Object resource_post(resource, access_token, body)
 
 Resourse path POST
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -156,7 +156,7 @@ No authorization required
 
 ## resource_put
 
-> AnyType resource_put(resource, access_token, body)
+> Object resource_put(resource, access_token, body)
 
 Resourse path PUT
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 

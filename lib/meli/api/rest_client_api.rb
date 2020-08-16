@@ -23,7 +23,7 @@ module Meli
     # @param resource [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def resource_delete(resource, access_token, opts = {})
       data, _status_code, _headers = resource_delete_with_http_info(resource, access_token, opts)
       data
@@ -33,7 +33,7 @@ module Meli
     # @param resource [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def resource_delete_with_http_info(resource, access_token, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RestClientApi.resource_delete ...'
@@ -65,7 +65,7 @@ module Meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -90,7 +90,7 @@ module Meli
     # @param resource [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def resource_get(resource, access_token, opts = {})
       data, _status_code, _headers = resource_get_with_http_info(resource, access_token, opts)
       data
@@ -100,7 +100,7 @@ module Meli
     # @param resource [String] 
     # @param access_token [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def resource_get_with_http_info(resource, access_token, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RestClientApi.resource_get ...'
@@ -132,7 +132,7 @@ module Meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -158,7 +158,7 @@ module Meli
     # @param access_token [String] 
     # @param body [Object] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def resource_post(resource, access_token, body, opts = {})
       data, _status_code, _headers = resource_post_with_http_info(resource, access_token, body, opts)
       data
@@ -169,7 +169,7 @@ module Meli
     # @param access_token [String] 
     # @param body [Object] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def resource_post_with_http_info(resource, access_token, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RestClientApi.resource_post ...'
@@ -207,7 +207,7 @@ module Meli
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -233,7 +233,7 @@ module Meli
     # @param access_token [String] 
     # @param body [Object] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def resource_put(resource, access_token, body, opts = {})
       data, _status_code, _headers = resource_put_with_http_info(resource, access_token, body, opts)
       data
@@ -244,7 +244,7 @@ module Meli
     # @param access_token [String] 
     # @param body [Object] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def resource_put_with_http_info(resource, access_token, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RestClientApi.resource_put ...'
@@ -282,7 +282,7 @@ module Meli
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

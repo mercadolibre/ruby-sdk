@@ -22,7 +22,7 @@ module Meli
     # Return a Item.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def items_id_get(id, opts = {})
       data, _status_code, _headers = items_id_get_with_http_info(id, opts)
       data
@@ -31,7 +31,7 @@ module Meli
     # Return a Item.
     # @param id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def items_id_get_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ItemsApi.items_id_get ...'
@@ -58,7 +58,7 @@ module Meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -84,7 +84,7 @@ module Meli
     # @param access_token [String] 
     # @param item [Item] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def items_id_put(id, access_token, item, opts = {})
       data, _status_code, _headers = items_id_put_with_http_info(id, access_token, item, opts)
       data
@@ -95,7 +95,7 @@ module Meli
     # @param access_token [String] 
     # @param item [Item] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def items_id_put_with_http_info(id, access_token, item, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ItemsApi.items_id_put ...'
@@ -133,7 +133,7 @@ module Meli
       post_body = opts[:body] || @api_client.object_to_http_body(item) 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -158,7 +158,7 @@ module Meli
     # @param access_token [String] 
     # @param item [Item] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def items_post(access_token, item, opts = {})
       data, _status_code, _headers = items_post_with_http_info(access_token, item, opts)
       data
@@ -168,7 +168,7 @@ module Meli
     # @param access_token [String] 
     # @param item [Item] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def items_post_with_http_info(access_token, item, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ItemsApi.items_post ...'
@@ -202,7 +202,7 @@ module Meli
       post_body = opts[:body] || @api_client.object_to_http_body(item) 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

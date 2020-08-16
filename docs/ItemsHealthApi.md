@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## items_id_health_actions_get
 
-> AnyType items_id_health_actions_get(id, access_token)
+> Object items_id_health_actions_get(id, access_token)
 
 Return item health actions by id.
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -59,7 +59,7 @@ No authorization required
 
 ## items_id_health_get
 
-> AnyType items_id_health_get(id, access_token)
+> Object items_id_health_get(id, access_token)
 
 Return health by id.
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -106,7 +106,7 @@ No authorization required
 
 ## sites_site_id_health_levels_get
 
-> AnyType sites_site_id_health_levels_get(site_id)
+> Object sites_site_id_health_levels_get(site_id)
 
 Return health levels.
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 

@@ -59,7 +59,7 @@ No authorization required
 
 ## get_token
 
-> AnyType get_token(opts)
+> Object get_token(opts)
 
 Request Access Token
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 

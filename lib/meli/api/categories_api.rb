@@ -22,7 +22,7 @@ module Meli
     # Return by category.
     # @param category_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def categories_category_id_get(category_id, opts = {})
       data, _status_code, _headers = categories_category_id_get_with_http_info(category_id, opts)
       data
@@ -31,7 +31,7 @@ module Meli
     # Return by category.
     # @param category_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def categories_category_id_get_with_http_info(category_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CategoriesApi.categories_category_id_get ...'
@@ -58,7 +58,7 @@ module Meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -82,7 +82,7 @@ module Meli
     # Return a categories by site.
     # @param site_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def sites_site_id_categories_get(site_id, opts = {})
       data, _status_code, _headers = sites_site_id_categories_get_with_http_info(site_id, opts)
       data
@@ -91,7 +91,7 @@ module Meli
     # Return a categories by site.
     # @param site_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def sites_site_id_categories_get_with_http_info(site_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CategoriesApi.sites_site_id_categories_get ...'
@@ -118,7 +118,7 @@ module Meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -144,7 +144,7 @@ module Meli
     # @param q [String] 
     # @param limit [String] 
     # @param [Hash] opts the optional parameters
-    # @return [AnyType]
+    # @return [Object]
     def sites_site_id_domain_discovery_search_get(site_id, q, limit, opts = {})
       data, _status_code, _headers = sites_site_id_domain_discovery_search_get_with_http_info(site_id, q, limit, opts)
       data
@@ -155,7 +155,7 @@ module Meli
     # @param q [String] 
     # @param limit [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def sites_site_id_domain_discovery_search_get_with_http_info(site_id, q, limit, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CategoriesApi.sites_site_id_domain_discovery_search_get ...'
@@ -192,7 +192,7 @@ module Meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

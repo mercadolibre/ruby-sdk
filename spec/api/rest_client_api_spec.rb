@@ -37,7 +37,7 @@ describe 'RestClientApi' do
   # @param resource 
   # @param access_token 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'resource_delete test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -49,7 +49,7 @@ describe 'RestClientApi' do
   # @param resource 
   # @param access_token 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'resource_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -62,7 +62,7 @@ describe 'RestClientApi' do
   # @param access_token 
   # @param body 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'resource_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -75,7 +75,7 @@ describe 'RestClientApi' do
   # @param access_token 
   # @param body 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'resource_put test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

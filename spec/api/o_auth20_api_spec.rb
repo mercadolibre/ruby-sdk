@@ -55,7 +55,7 @@ describe 'OAuth20Api' do
   # @option opts [String] :redirect_uri 
   # @option opts [String] :code 
   # @option opts [String] :refresh_token 
-  # @return [AnyType]
+  # @return [Object]
   describe 'get_token test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

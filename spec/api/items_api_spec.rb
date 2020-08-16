@@ -36,7 +36,7 @@ describe 'ItemsApi' do
   # Return a Item.
   # @param id 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'items_id_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -49,7 +49,7 @@ describe 'ItemsApi' do
   # @param access_token 
   # @param item 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'items_id_put test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -61,7 +61,7 @@ describe 'ItemsApi' do
   # @param access_token 
   # @param item 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'items_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

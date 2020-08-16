@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## categories_category_id_get
 
-> AnyType categories_category_id_get(category_id)
+> Object categories_category_id_get(category_id)
 
 Return by category.
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -57,7 +57,7 @@ No authorization required
 
 ## sites_site_id_categories_get
 
-> AnyType sites_site_id_categories_get(site_id)
+> Object sites_site_id_categories_get(site_id)
 
 Return a categories by site.
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 
@@ -102,7 +102,7 @@ No authorization required
 
 ## sites_site_id_domain_discovery_search_get
 
-> AnyType sites_site_id_domain_discovery_search_get(site_id, q, limit)
+> Object sites_site_id_domain_discovery_search_get(site_id, q, limit)
 
 Predictor
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyType**](AnyType.md)
+**Object**
 
 ### Authorization
 

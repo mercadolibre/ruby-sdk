@@ -108,7 +108,7 @@ module Meli
     # @option opts [String] :redirect_uri 
     # @option opts [String] :code 
     # @option opts [String] :refresh_token 
-    # @return [AnyType]
+    # @return [Object]
     def get_token(opts = {})
       data, _status_code, _headers = get_token_with_http_info(opts)
       data
@@ -123,7 +123,7 @@ module Meli
     # @option opts [String] :redirect_uri 
     # @option opts [String] :code 
     # @option opts [String] :refresh_token 
-    # @return [Array<(AnyType, Integer, Hash)>] AnyType data, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def get_token_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OAuth20Api.get_token ...'
@@ -154,7 +154,7 @@ module Meli
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'AnyType' 
+      return_type = opts[:return_type] || 'Object' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

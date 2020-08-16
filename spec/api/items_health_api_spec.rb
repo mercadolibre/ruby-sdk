@@ -37,7 +37,7 @@ describe 'ItemsHealthApi' do
   # @param id 
   # @param access_token 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'items_id_health_actions_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -49,7 +49,7 @@ describe 'ItemsHealthApi' do
   # @param id 
   # @param access_token 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'items_id_health_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -60,7 +60,7 @@ describe 'ItemsHealthApi' do
   # Return health levels.
   # @param site_id 
   # @param [Hash] opts the optional parameters
-  # @return [AnyType]
+  # @return [Object]
   describe 'sites_site_id_health_levels_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
