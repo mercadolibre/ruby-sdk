@@ -1,133 +1,137 @@
-# MercadoLibre's Ruby SDK
 
-This is the official Ruby SDK for MercadoLibre's Platform.
+<h1 align="center">
+  <a href="https://developers.mercadolibre.com">
+    <img src="https://user-images.githubusercontent.com/1153516/29861072-689ec57e-8d3e-11e7-8368-dd923543258f.jpg" alt="Mercado Libre Developers" width="230"></a>
+  </a>
+  <br><br>
+  MercadoLibre's Ruby SDK
+  <br>
+</h1>
 
-## How do I install it?
+<h4 align="center">This is the official Ruby SDK for MercadoLibre's Platform.</h4>
 
-       clone repository
-       https://github.com/mercadolibre/ruby-sdk.git
+## Installation
 
-## Using Bundler
+### Build a gem
 
-Add it to your Gemfile:
+To build the Ruby code into a gem:
 
-    gem 'meli', '~> 1.0.2'
-
-And then install
-
-    bundle install
-
-## How do I use it?
-
-The first thing to do is to instance a ```Meli``` class. You'll need to give a ```clientId``` and a ```clientSecret```. You can obtain both after creating your own application. For more information on this please read: [creating an application](http://developers.mercadolibre.com/application-manager/)
-
-### Including the Lib
-Include the lib meli in your project
-
-### Attention
-Don't forget to set the authentication URL of your country in file lib/config.yml
-
-```ruby
-require 'lib/meli'
-```
-Start the development!
-
-### Create an instance of Meli class
-Simple like this
-```ruby
-meli = Meli.new(1234, "a secret")
-```
-With this instance you can start working on MercadoLibre's APIs.
-
-There are some design considerations worth to mention.
-
-1. This SDK is just a thin layer on top of an http client to handle all the OAuth WebServer flow for you.
-
-2. There is JSON parsing. this SDK will include [json](http://rubygems.org/gems/json) gem for internal usage.
-
-3. If you already have the access_token and the refresh_token you can pass in the constructor
-
-```ruby
-meli = Meli.new(1234, "a secret", "Access_Token", "Refresh_Token")
+```shell
+gem build meli.gemspec
 ```
 
-## How do I redirect users to authorize my application?
+Then either install the gem locally:
 
-This is a 2 step process.
-
-First get the link to redirect the user. This is very easy! Just:
-
-```ruby
-redirectUrl = meli.auth_url("http://somecallbackurl")
+```shell
+gem install ./meli-3.0.0.gem
 ```
 
-This will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process.
+(for development, run `gem install --dev ./meli-3.0.0.gem` to install the development dependencies)
 
-Once the user is redirected to your callback url, you'll receive in the query string, a parameter named ```code```. You'll need this for the second part of the process.
+or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
-```ruby
-meli.authorize("the received code", "http://somecallbackurl")
+Finally add this to the Gemfile:
+
+    gem 'meli', '~> 3.0.0'
+
+### Install from Git
+
+If the Ruby gem is hosted at a git repository: [https://github.com/mercadolibre/ruby-sdk](https://github.com/mercadolibre/ruby-sdk), then add the following in the Gemfile:
+
+    gem 'meli', :git => 'https://github.com/mercadolibre/ruby-sdk.git'
+
+### Include the Ruby code directly
+
+Include the Ruby code directly using `-I` as follows:
+
+```shell
+ruby -Ilib script.rb
 ```
 
-This will get an ```access_token``` and a ```refresh_token``` (is case your application has the ```offline_access```) for your application and your user.
-
-At this stage your are ready to make call to the API on behalf of the user.
-
-#### Making GET calls
-
+## Usage
 ```ruby
-params = {:access_token => meli.access_token}
-response = meli.get("/users/me", params)
+# Auth URLs Options by country
+
+# 1:  "https://auth.mercadolibre.com.ar"
+# 2:  "https://auth.mercadolivre.com.br"
+# 3:  "https://auth.mercadolibre.com.co"
+# 4:  "https://auth.mercadolibre.com.mx"
+# 5:  "https://auth.mercadolibre.com.uy"
+# 6:  "https://auth.mercadolibre.cl"
+# 7:  "https://auth.mercadolibre.com.cr"
+# 8:  "https://auth.mercadolibre.com.ec"
+# 9:  "https://auth.mercadolibre.com.ve"
+# 10: "https://auth.mercadolibre.com.pa"
+# 11: "https://auth.mercadolibre.com.pe"
+# 12: "https://auth.mercadolibre.com.do"
+# 13: "https://auth.mercadolibre.com.bo"
+# 14: "https://auth.mercadolibre.com.py"
+
+# For example in your app
+client_id = "Your client_id"
+redirect_uri = "Your redirect uri"
+puts '<a href= "https://auth.mercadolibre.com.ar/authorization?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri +'">'+ Authenticate + '</a>'
+```
+his will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process.
+
+Once the user is redirected to your callback url, you'll receive in the query string, a parameter named code. You'll need this for the second part of the process
+
+
+## Examples for OAuth - get token
+```ruby
+# load the gem
+require 'Meli'
+
+api_instance = Meli::OAuth20Api.new
+opts = {
+  grant_type: 'authorization_code', # String | 
+  client_id: 'client_id_example', # String | 
+  client_secret: 'client_secret_example', # String | 
+  redirect_uri: 'redirect_uri_example', # String | 
+  code: 'code_example', # String | 
+  refresh_token: 'refresh_token_example' # String | 
+}
+
+begin
+  #Request Access Token
+  result = api_instance.get_token(opts)
+  p result
+rescue Meli::ApiError => e
+  puts "Exception when calling OAuth20Api->get_token: #{e}"
+end
 ```
 
-The response body will not be converted from json to Ruby hash
 
-Look this simple way to resolve this:
-
+## Example using the RestClient with a POST Item
 ```ruby
- #convert json into a ruby hash
-resp_hash = JSON.parse response.body
-puts resp_hahs["KEY"]
+# load the gem
+require 'Meli'
+
+api_instance = Meli::RestClientApi.new
+resource = 'resource_example' # String | 
+access_token = 'access_token_example' # String | 
+body = nil # Object | 
+
+begin
+  #Resourse path POST
+  result = api_instance.resource_post(resource, access_token, body)
+  p result
+rescue Meli::ApiError => e
+  puts "Exception when calling RestClientApi->resource_post: #{e}"
+end
 ```
 
-#### Making POST calls
 
-```ruby
-params = {:access_token => meli.access_token}
+## Documentation & Important notes
 
- #we are cool, the sdk will convert this body into json for you
-body = {:foo => "bar", :bar => "foo"}
+##### The URIs are relative to https://api.mercadolibre.com
 
-response = meli.post("/items", body, params)
-```
+##### The Authorization URLs:
+###### Remember set your correct country ID
+###### https://auth.mercadolibre.{country_domain}
 
-#### Making PUT calls
+#####  All docs for the library are located [here](https://github.com/mercadolibre/ruby-sdk/tree/master/docs)
 
-```ruby
-params = {:access_token => meli.access_token}
+#####  Check out our examples codes in the folder [examples](https://github.com/mercadolibre/ruby-sdk/tree/master/examples)
 
- #we are cool, the sdk will convert this body into json for you
-body = {:foo => "bar", :bar => "foo"}
-
-response = meli.put("/items/123", body, params)
-```
-
-#### Making DELETE calls
-```ruby
-params = {:access_token => meli.access_token}
-response = meli.delete("/questions/123", params)
-```
-
-## Examples
-
-Don't forget to check out our examples codes in the folder [examples](https://github.com/mercadolibre/ruby-sdk/tree/master/examples)
-
-## Community
-
-You can contact us if you have questions using the standard communication channels described in the [developer's site](http://developers.mercadolibre.com/community/)
-
-## I want to contribute!
-
-That is great! Just fork the project in github. Create a topic branch, write some code, and add some tests for your new code.
-
-Thanks for helping!
+##### Don’t forget to check out our [developer site](https://developers.mercadolibre.com/)
