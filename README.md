@@ -1,4 +1,20 @@
+![No longer maintained](https://img.shields.io/badge/Maintenance-OFF-red.svg)
 
+### [DEPRECATED] This repository is no longer maintained
+
+> From the first week of April 2021 we will stop maintaining our SDKs.
+>
+> This project is not functional, the dependencies will not be updated to latest ones.
+>
+> We recommend you read our [documentation](https://developers.mercadolibre.com).
+
+  <a href="https://developers.mercadolibre.com">
+    <img src="https://user-images.githubusercontent.com/1153516/73021269-043c2d80-3e06-11ea-8d0e-6e91441c2900.png" alt="Mercado Libre Developers" width="200"></a>
+  </a>
+
+---
+
+<br>
 <h1 align="center">
   <a href="https://developers.mercadolibre.com">
     <img src="https://user-images.githubusercontent.com/1153516/29861072-689ec57e-8d3e-11e7-8368-dd923543258f.jpg" alt="Mercado Libre Developers" width="230"></a>
@@ -49,6 +65,7 @@ ruby -Ilib script.rb
 ```
 
 ## Usage
+
 ```ruby
 # Auth URLs Options by country
 
@@ -72,24 +89,25 @@ client_id = "Your client_id"
 redirect_uri = "Your redirect uri"
 puts '<a href= "https://auth.mercadolibre.com.ar/authorization?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri +'">'+ Authenticate + '</a>'
 ```
+
 his will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process.
 
 Once the user is redirected to your callback url, you'll receive in the query string, a parameter named code. You'll need this for the second part of the process
 
-
 ## Examples for OAuth - get token
+
 ```ruby
 # load the gem
 require 'Meli'
 
 api_instance = Meli::OAuth20Api.new
 opts = {
-  grant_type: 'authorization_code', # String | 
-  client_id: 'client_id_example', # String | 
-  client_secret: 'client_secret_example', # String | 
-  redirect_uri: 'redirect_uri_example', # String | 
-  code: 'code_example', # String | 
-  refresh_token: 'refresh_token_example' # String | 
+  grant_type: 'authorization_code', # String |
+  client_id: 'client_id_example', # String |
+  client_secret: 'client_secret_example', # String |
+  redirect_uri: 'redirect_uri_example', # String |
+  code: 'code_example', # String |
+  refresh_token: 'refresh_token_example' # String |
 }
 
 begin
@@ -101,16 +119,16 @@ rescue Meli::ApiError => e
 end
 ```
 
-
 ## Example using the RestClient with a POST Item
+
 ```ruby
 # load the gem
 require 'Meli'
 
 api_instance = Meli::RestClientApi.new
-resource = 'resource_example' # String | 
-access_token = 'access_token_example' # String | 
-body = nil # Object | 
+resource = 'resource_example' # String |
+access_token = 'access_token_example' # String |
+body = nil # Object |
 
 begin
   #Resourse path POST
@@ -121,17 +139,18 @@ rescue Meli::ApiError => e
 end
 ```
 
-
 ## Documentation & Important notes
 
 ##### The URIs are relative to https://api.mercadolibre.com
 
 ##### The Authorization URLs:
+
 ###### Remember set your correct country ID
+
 ###### https://auth.mercadolibre.{country_domain}
 
-#####  All docs for the library are located [here](https://github.com/mercadolibre/ruby-sdk/tree/master/docs)
+##### All docs for the library are located [here](https://github.com/mercadolibre/ruby-sdk/tree/master/docs)
 
-#####  Check out our examples codes in the folder [examples](https://github.com/mercadolibre/ruby-sdk/tree/master/examples)
+##### Check out our examples codes in the folder [examples](https://github.com/mercadolibre/ruby-sdk/tree/master/examples)
 
 ##### Don’t forget to check out our [developer site](https://developers.mercadolibre.com/)
